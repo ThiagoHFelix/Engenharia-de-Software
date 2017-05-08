@@ -1,0 +1,23 @@
+
+========> Itens do menu do adminstrador
+
+- Cadastrar  
+	- Aluno
+	- Curso
+	- Matéria
+	- Professor
+	- Administrador
+
+- Alterar (Além de poder altar também se pode fazer desativação do objeto)
+	- Aluno
+	- Curso
+	- Matéria 
+	- Professor
+	- Administrador
+
+- Informações
+	- Aluno
+	- Curso
+	- Matéria 
+	- Professor
+	- Administrador 

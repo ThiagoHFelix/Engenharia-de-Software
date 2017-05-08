@@ -1,0 +1,20 @@
+
+
+-- Divisão de tarefas 
+
+- Emmanuel
+	- Atualização no manual do projeto
+	- Documentação e realização de testes
+	- Banco de dados
+
+- Leandro
+	- Inserir, desativar e modificar ALUNO
+	- Inserir, desativar e modificar PROFESSOR
+	- Inserir, desativar e modificar ADMINISTRADOR
+
+- Thiago
+	- Inserir, desativar e modificar MATERIA	
+	- Inserir, desativar e modificar CURSO
+	- Inserir, desativar e modificar AVISO	
+	- Login
+	- Diagrama de classes

@@ -1,0 +1,25 @@
+--> Paginas HTML para a Escola Shalon
+
+
+- Pagina Inicial (Página)
+ - Login página especifíca ou na pagina inicial 
+
+-> Gerencia de dados 
+	- Administrador
+		- Inserir, Desativar ou Modificar Avisos (Pagina)
+		- Inserir, Desativar ou Modificar ADMINSTRADOR (Página)
+		- Inserir, Desativar ou Modificar ALUNO (Página)
+		- Inserir, Desativar ou Modificar PROFESSOR (Página)	
+		- Inserir, Desativar ou Modificar MATERIA (Página)
+		- Inserir, Desativar ou Modificar CURSO (Página)
+		- Inserir, Desativar ou Modificar MATRICULA (Página)
+	- Aluno
+		- Avisos,Cursos cadastrados (Página Inicial)
+		- Visualizar materias cadastradas (Página)
+		- Vizualizar notas e frequência de cada matéria (Página)
+		- Modificar informações pessoais (Página)	
+		- Histórico de Matérias cursadas (Página)
+	- Professor
+		- Inserir dados de cada matéria, isso inclui notas,Ementa,Descrição entre outras informações (Página)
+		- Modificar informações pessoais (Página)
+		- Visualizar notas e frequêcia de cada Aluno em sua matéria (Página)

@@ -1,0 +1,57 @@
+
+
+
+  var working = false;
+  $('.login').on('submit', function(e) {
+  e.preventDefault();
+  if (working) return; 
+  working = true;
+  var $this = $(this),  $state = $this.find('button > .state');
+  $this.addClass('loading');
+  $state.html('Autenticando');
+  
+   var ra = document.getElementById("login_ra").value.trim();
+   	   var senha = document.getElementById("login_senha").value.trim(); 
+
+         if(ra == ""  || senha == ""){
+         
+           $state.html('RA ou senha, não inserido(s)');
+            
+         }// IF
+   	   
+			else {
+			
+				/*window.open("user_area.html");*/
+			
+			}// ELSE   	   
+  
+  /*
+  setTimeout(function() {
+    $this.addClass('ok');
+    $state.html('Bem-Vindo');
+    setTimeout(function() {
+      $state.html('Logar');
+      $this.removeClass('ok loading');
+      working = false;
+    }, 4000);
+  }, 3000); */
+  
+  
+  
+  
+});
+
+
+  function loga() {
+  
+   document.getElementById("login").value = "Certo"; 
+  
+  }
+
+
+/* ------------------------------------------------------------------------------ 
+   Validação da senha
+*/
+
+
+
