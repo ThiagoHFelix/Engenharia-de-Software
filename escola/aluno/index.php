@@ -16,7 +16,7 @@
         
         <?php
         
-            session_start();
+          //  session_start();
         
             $id = filter_input(INPUT_GET, id);
       
@@ -57,7 +57,7 @@
             <div class="content-wrapper">
                 <div class="page-title">
                     <div>
-                        <h1><i class="fa fa-edit"></i> Tela Inicial do Adminstrador - Sistema Escolar </h1>
+                        <h1><i class="fa fa-edit"></i> Tela Inicial do Aluno - Sistema Escolar </h1>
                         <p>Subtitulor</p>
                     </div>
                     <div>
@@ -74,7 +74,7 @@
                                 <div class="col-lg-10">
                                     <div class="well bs-component" style="height: 400px">
                                         
-                                        <h1>Informações para o administrador</h1>
+                                        <h1>Informações para o aluno</h1>
                                         
                                     </div>
                                 </div>

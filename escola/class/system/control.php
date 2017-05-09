@@ -1,15 +1,17 @@
 
 <?php
 
+
 //Create by Thiago Henrique Felix
 //Class responsavel pelo controle da gerencia de dados
 
-include_once 'model.php';
+include_once "model.php";
 
 class control {
     
     
-
+    
+    
     /**
      * Construtor padrão
      */
@@ -18,7 +20,7 @@ class control {
     }//Construct
     
     
-    /**
+      /**
      * Valida os dados do login
      * @param string $id
      * @param string $senha
@@ -30,14 +32,15 @@ class control {
 
         if (trim($id) == "" || trim($senha) == "") {
 
-            return "Dados inválidos";
+            return false;
+            
         }//IF
-
-
-        $modelBanco = new moldel();
-
-        return $modelBanco . validaLogin($id, $senha);
-        
+  
+       $classModel = new model();
+       
+        return $classModel->validaLoginBanco($id, $senha);
+       
+       
     }//validaLogin
     
     
