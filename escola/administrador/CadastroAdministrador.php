@@ -8,7 +8,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <!-- CSS-->
-        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="../css/main.css">
 
     </head>
     <body>
@@ -157,11 +157,11 @@
         </div>
 
         <!-- Javascripts-->
-        <script src="js/jquery-2.1.4.min.js"></script>
-        <script src="js/essential-plugins.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/plugins/pace.min.js"></script>
-        <script src="js/main.js"></script>
+        <script src="../js/jquery-2.1.4.min.js"></script>
+        <script src="../js/essential-plugins.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/plugins/pace.min.js"></script>
+        <script src="../js/main.js"></script>
 
     </body> 	
 </html>

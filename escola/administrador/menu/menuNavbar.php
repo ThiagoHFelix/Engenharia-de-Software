@@ -1,5 +1,5 @@
 <!-- Navbar-->
-<header class="main-header hidden-print"><a class="logo" href="index.html">Shalon</a>
+<header class="main-header hidden-print"><a class="logo" href="../index.php">Shalon</a>
     <nav class="navbar navbar-static-top">
         <!-- Sidebar toggle button--><a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
         <!-- Navbar Right Menu-->
@@ -23,7 +23,7 @@
                     <ul class="dropdown-menu settings-menu">
                         <li><a href="page-user.html"><i class="fa fa-cog fa-lg"></i> Configurações </a></li>
                         <li><a href="page-user.html"><i class="fa fa-user fa-lg"></i> Perfil </a></li>
-                        <li><a href="../index.php"><i class="fa fa-sign-out fa-lg"></i>Sair</a></li>
+                        <li><a href="logout.php"><i class="fa fa-sign-out fa-lg"></i>Sair</a></li>
                     </ul>
                 </li>
             </ul>

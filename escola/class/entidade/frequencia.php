@@ -26,8 +26,39 @@ class frequencia
         $this->presenca = $presenca;
     }//Construct
 
-    
-      /**
+    function getRa() {
+        return $this->ra;
+    }
+
+    function getRm() {
+        return $this->rm;
+    }
+
+    function getData() {
+        return $this->data;
+    }
+
+    function getPresenca() {
+        return $this->presenca;
+    }
+
+    function setRa($ra) {
+        $this->ra = $ra;
+    }
+
+    function setRm($rm) {
+        $this->rm = $rm;
+    }
+
+    function setData($data) {
+        $this->data = $data;
+    }
+
+    function setPresenca($presenca) {
+        $this->presenca = $presenca;
+    }
+
+          /**
      * Destroi o atual objeto
      * @return string
      */

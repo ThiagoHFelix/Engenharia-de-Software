@@ -19,8 +19,23 @@ class telefone {
         $this->telefone = $telefone;
     }//Construct
     
-    
-    
+    function getCpf() {
+        return $this->cpf;
+    }
+
+    function getTelefone() {
+        return $this->telefone;
+    }
+
+    function setCpf($cpf) {
+        $this->cpf = $cpf;
+    }
+
+    function setTelefone($telefone) {
+        $this->telefone = $telefone;
+    }
+
+        
     /**
      * Destrutor do objeto
      * @return string

@@ -27,8 +27,31 @@ class professor extends pessoa {
         
     }//Construct
 
-    
-    /**
+    function getRp() {
+        return $this->rp;
+    }
+
+    function getStatus() {
+        return $this->status;
+    }
+
+    function getCpf() {
+        return $this->cpf;
+    }
+
+    function setRp($rp) {
+        $this->rp = $rp;
+    }
+
+    function setStatus($status) {
+        $this->status = $status;
+    }
+
+    function setCpf($cpf) {
+        $this->cpf = $cpf;
+    }
+
+        /**
      * Destroi o objeto atual
      * @return type
      */

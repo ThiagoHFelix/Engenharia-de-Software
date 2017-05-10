@@ -28,8 +28,47 @@ class avaliado
         $this->nota = $nota;
         $this->tipo = $tipo;
     }//Construct
+    function getRa() {
+        return $this->ra;
+    }
 
-      /**
+    function getRm() {
+        return $this->rm;
+    }
+
+    function getData() {
+        return $this->data;
+    }
+
+    function getNota() {
+        return $this->nota;
+    }
+
+    function getTipo() {
+        return $this->tipo;
+    }
+
+    function setRa($ra) {
+        $this->ra = $ra;
+    }
+
+    function setRm($rm) {
+        $this->rm = $rm;
+    }
+
+    function setData($data) {
+        $this->data = $data;
+    }
+
+    function setNota($nota) {
+        $this->nota = $nota;
+    }
+
+    function setTipo($tipo) {
+        $this->tipo = $tipo;
+    }
+
+          /**
      * Destroi o atual objeto
      * @return string
      */

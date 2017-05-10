@@ -30,11 +30,34 @@ class administrador extends pessoa {
         $this->cpf = $cpf;
         $this->status = $status;
         parent::__construct($cpf, $rg, $bairro, $cidade, $estado, $rua, $cep, $primeironome, $sobrenome, $nascimento, $senha);
+    }//Construtor
+
+
+    function getRad() {
+        return $this->rad;
     }
 
-//Construtor
+    function getCpf() {
+        return $this->cpf;
+    }
 
-    /**
+    function getStatus() {
+        return $this->status;
+    }
+
+    function setRad($rad) {
+        $this->rad = $rad;
+    }
+
+    function setCpf($cpf) {
+        $this->cpf = $cpf;
+    }
+
+    function setStatus($status) {
+        $this->status = $status;
+    }
+
+        /**
      * Destroi o atual objeto 
      * @return string
      */

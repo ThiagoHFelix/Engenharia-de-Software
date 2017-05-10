@@ -23,8 +23,39 @@ class aviso
         $this->aviso = $aviso;
         $this->data = $data;
     }//Construct
+    function getRa() {
+        return $this->ra;
+    }
 
-      /**
+    function getRad() {
+        return $this->rad;
+    }
+
+    function getAviso() {
+        return $this->aviso;
+    }
+
+    function getData() {
+        return $this->data;
+    }
+
+    function setRa($ra) {
+        $this->ra = $ra;
+    }
+
+    function setRad($rad) {
+        $this->rad = $rad;
+    }
+
+    function setAviso($aviso) {
+        $this->aviso = $aviso;
+    }
+
+    function setData($data) {
+        $this->data = $data;
+    }
+
+          /**
      * Destroi o atual objeto
      * @return string
      */

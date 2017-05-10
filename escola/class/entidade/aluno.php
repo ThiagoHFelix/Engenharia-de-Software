@@ -28,8 +28,39 @@ class aluno extends pessoa
         parent::__construct($cpf, $qualificacoes, $status, $ra, $estado, $rua, $cep, $primeironome, $sobrenome, $nascimento, $senha);
         
     }//Construct
+    function getRa() {
+        return $this->ra;
+    }
 
-    
+    function getCpf() {
+        return $this->cpf;
+    }
+
+    function getStatus() {
+        return $this->status;
+    }
+
+    function getQualificacoes() {
+        return $this->qualificacoes;
+    }
+
+    function setRa($ra) {
+        $this->ra = $ra;
+    }
+
+    function setCpf($cpf) {
+        $this->cpf = $cpf;
+    }
+
+    function setStatus($status) {
+        $this->status = $status;
+    }
+
+    function setQualificacoes($qualificacoes) {
+        $this->qualificacoes = $qualificacoes;
+    }
+
+        
     /**
      * Destroi o atual objeto
      * @return string

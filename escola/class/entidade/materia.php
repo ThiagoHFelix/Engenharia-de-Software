@@ -55,8 +55,119 @@ class materia
         $this->dataFinal = $dataFinal;
     }//Construct 
 
-    
-    /**
+    function getRm() {
+        return $this->rm;
+    }
+
+    function getRp() {
+        return $this->rp;
+    }
+
+    function getRc() {
+        return $this->rc;
+    }
+
+    function getAvaliacao() {
+        return $this->avaliacao;
+    }
+
+    function getExtraClasse() {
+        return $this->extraClasse;
+    }
+
+    function getMaterial() {
+        return $this->material;
+    }
+
+    function getBibliografia() {
+        return $this->bibliografia;
+    }
+
+    function getTitulo() {
+        return $this->titulo;
+    }
+
+    function getApresentacao() {
+        return $this->apresentacao;
+    }
+
+    function getObjetivo() {
+        return $this->objetivo;
+    }
+
+    function getEmenta() {
+        return $this->ementa;
+    }
+
+    function getStatus() {
+        return $this->status;
+    }
+
+    function getDataInicio() {
+        return $this->dataInicio;
+    }
+
+    function getDataFinal() {
+        return $this->dataFinal;
+    }
+
+    function setRm($rm) {
+        $this->rm = $rm;
+    }
+
+    function setRp($rp) {
+        $this->rp = $rp;
+    }
+
+    function setRc($rc) {
+        $this->rc = $rc;
+    }
+
+    function setAvaliacao($avaliacao) {
+        $this->avaliacao = $avaliacao;
+    }
+
+    function setExtraClasse($extraClasse) {
+        $this->extraClasse = $extraClasse;
+    }
+
+    function setMaterial($material) {
+        $this->material = $material;
+    }
+
+    function setBibliografia($bibliografia) {
+        $this->bibliografia = $bibliografia;
+    }
+
+    function setTitulo($titulo) {
+        $this->titulo = $titulo;
+    }
+
+    function setApresentacao($apresentacao) {
+        $this->apresentacao = $apresentacao;
+    }
+
+    function setObjetivo($objetivo) {
+        $this->objetivo = $objetivo;
+    }
+
+    function setEmenta($ementa) {
+        $this->ementa = $ementa;
+    }
+
+    function setStatus($status) {
+        $this->status = $status;
+    }
+
+    function setDataInicio($dataInicio) {
+        $this->dataInicio = $dataInicio;
+    }
+
+    function setDataFinal($dataFinal) {
+        $this->dataFinal = $dataFinal;
+    }
+
+        /**
      * Destroi o atual objeto
      * @return string
      */

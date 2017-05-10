@@ -12,7 +12,7 @@ class model {
     }//construct
 
     /**
-     * Busca os dados de login no banco de dados
+     * verifica os dados de login no banco de dados
      */
     public function validaLoginBanco($id, $senha) {
 
@@ -29,8 +29,7 @@ class model {
                 
             }//IF
 
-           
-            
+
    //=============================================================================================         
             //  procura na tabela do administrador 
             $sql = " select P.CPF,P.Senha from Administrador A, Pessoa P where P.CPF = A.cpf  ";
@@ -52,47 +51,7 @@ class model {
                 
             }//While
    //=============================================================================================              
-             // procura na tabela do aluno 
-            $sql = " select P.CPF,P.Senha from Aluno A, Pessoa P where P.CPF = A.cpf  ";
-
-            $query = mysqli_query($con, $sql);
-              
-            while ($resultado = mysqli_fetch_array($query)) {
-
                
-                if ($id == $resultado['CPF'] && $senha == $resultado['Senha']) {
-                    
-                    
-                    mysqli_close($con);
-                    
-                    return true;
-                    
-                }//IF
-                
-                
-            }//While
-//=============================================================================================
-            // procura na tabela do professor 
-            $sql = " select P.CPF,P.Senha from Professor PR, Pessoa P where P.CPF = PR.cpf  ";
-
-            $query = mysqli_query($con, $sql);
-              
-            while ($resultado = mysqli_fetch_array($query)) {
-
-               
-                if ($id == $resultado['CPF'] && $senha == $resultado['Senha']) {
-                    
-                    
-                    mysqli_close($con);
-                    
-                    return true;
-                    
-                }//IF
-                
-                
-            }//While
-//=============================================================================================
-            
             
             mysqli_close($con);
             
@@ -108,6 +67,53 @@ class model {
         }//catch
         
     }//validaLoginBanco
+    
+    /**
+     * Cadastra uma pessoa no banco de dados
+     * @param Pessoa $pessoa Utiliza os dados contidos na classe para o cadastro
+     * @return boolean True se o cadastro for realizado com sucesso caso contrario false
+     */
+    public function cadastraPessoa(Pessoa $pessoa){
+        
+        
+       try{
+           
+            $con = mysqli_connect("localhost", "root", "FELIXlix_9809", "SistemaEcolarShalon");
+            
+            if (mysqli_connect_errno()) {
+
+                //FIXIT criar um log
+               //"Erro ao fazer a conexão com o banco de dados ". mysqli_connect_error();
+                
+                return false;
+                
+            }//IF
+           
+             //SQL para inserir na tabela pessoa
+             $sqlPessoa = "insert into pessoa values ()";
+             
+             //SQL para inserir na tebela email
+             $sqlEmail = "insert into";
+             
+             //SQL para inserir na tabela telefone
+             $sqlTelefone = "insert into";
+             
+             $query = mysqli_query($con, $sqlPessoa);
+           
+       }//try
+       catch(Exception $ex){
+           
+           
+           
+       }//catch
+        
+        
+        
+        
+    }//cadastraPessoa
+    
+    
+    
 
 }//Class
 

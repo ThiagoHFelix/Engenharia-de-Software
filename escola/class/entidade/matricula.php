@@ -27,8 +27,39 @@ class matricula
         $this->status = $status;
     }//Construct
 
-    
-    /**
+    function getRa() {
+        return $this->ra;
+    }
+
+    function getRc() {
+        return $this->rc;
+    }
+
+    function getData() {
+        return $this->data;
+    }
+
+    function getStatus() {
+        return $this->status;
+    }
+
+    function setRa($ra) {
+        $this->ra = $ra;
+    }
+
+    function setRc($rc) {
+        $this->rc = $rc;
+    }
+
+    function setData($data) {
+        $this->data = $data;
+    }
+
+    function setStatus($status) {
+        $this->status = $status;
+    }
+
+     /**
      * Destroi o atual objeto
      * @return string
      */

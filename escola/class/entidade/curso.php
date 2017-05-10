@@ -25,8 +25,39 @@ class curso
         $this->titulo = $titulo;
         $this->descricao = $descricao;
     }//Function
+    function getRc() {
+        return $this->rc;
+    }
 
-    
+    function getStatus() {
+        return $this->status;
+    }
+
+    function getTitulo() {
+        return $this->titulo;
+    }
+
+    function getDescricao() {
+        return $this->descricao;
+    }
+
+    function setRc($rc) {
+        $this->rc = $rc;
+    }
+
+    function setStatus($status) {
+        $this->status = $status;
+    }
+
+    function setTitulo($titulo) {
+        $this->titulo = $titulo;
+    }
+
+    function setDescricao($descricao) {
+        $this->descricao = $descricao;
+    }
+
+        
     /**
      * Destroi o atual objeto
      * @return string

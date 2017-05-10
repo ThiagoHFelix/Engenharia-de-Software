@@ -30,8 +30,55 @@ class aula
         $this->nomeTurma = $nomeTurma;
         $this->turno = $turno;
     }//Construct
+    function getRm() {
+        return $this->rm;
+    }
 
-    
+    function getDiaSemana() {
+        return $this->diaSemana;
+    }
+
+    function getHorarioInicial() {
+        return $this->horarioInicial;
+    }
+
+    function getHorarioFinal() {
+        return $this->horarioFinal;
+    }
+
+    function getNomeTurma() {
+        return $this->nomeTurma;
+    }
+
+    function getTurno() {
+        return $this->turno;
+    }
+
+    function setRm($rm) {
+        $this->rm = $rm;
+    }
+
+    function setDiaSemana($diaSemana) {
+        $this->diaSemana = $diaSemana;
+    }
+
+    function setHorarioInicial($horarioInicial) {
+        $this->horarioInicial = $horarioInicial;
+    }
+
+    function setHorarioFinal($horarioFinal) {
+        $this->horarioFinal = $horarioFinal;
+    }
+
+    function setNomeTurma($nomeTurma) {
+        $this->nomeTurma = $nomeTurma;
+    }
+
+    function setTurno($turno) {
+        $this->turno = $turno;
+    }
+
+        
       /**
      * Destroi o atual objeto
      * @return string
