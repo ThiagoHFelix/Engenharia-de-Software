@@ -27,25 +27,46 @@ class control {
      * @return string
      */
      public function validaLogin(string $id, string $senha) {
-         
-         
-
-        if (trim($id) == "" || trim($senha) == "") {
+        
+        if ( (strcmp(trim($id),"")==0) || (strcmp(trim($senha),"") == 0) ) {
 
             return false;
             
         }//IF
   
-       $classModel = new model();
-       
+        $classModel = new model();       
         return $classModel->validaLoginBanco($id, $senha);
        
        
     }//validaLogin
     
+   /**
+     * Busca informações de uma pessoa no banco de dados
+     * @param type $id
+     * @param type $senha
+     * @return type Retorna false, se não for possivel acessar o banco de dados, uma string
+     * quando usuário não encontrado, ou, se encontrar, retorna um array com as infromações
+     */
+    public function getDadosPessoa($id,$senha){
+        
+        $classModel = new model();
+        return $classModel->buscaPessoa($id, $senha);
+        
+    }//getDadosPessoa
     
     
-    
+     /**
+     * Verifica qual entidade é a pessoa, Administrador, Aluno ou Professor
+     * @param type $id CPF da pessoa
+     * @return string Retorna uma string do tipo da pessoa
+     */
+    public function getEntidadeTipo($id){
+        
+        
+          $classModel = new model();
+          return $classModel->getPessoaTipo($id);
+        
+    }//getEntidadeTipo
     
     
 }//Class

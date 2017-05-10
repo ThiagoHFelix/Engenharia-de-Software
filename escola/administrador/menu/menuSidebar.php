@@ -4,8 +4,8 @@
         <div class="user-panel">
             <div class="pull-left image"><img class="img-circle" src="../imagens/user.png" alt="User Image"></div>
             <div class="pull-left info">
-                <p>Nome</p>
-                <p class="designation"> Administrador </p>
+                <div ><p style=""><?php echo $_SESSION['primeironome']." ".$_SESSION['sobrenome'];?></p></div>
+                <p class="designation"> <?php echo $_SESSION['entidade']; ?> </p>
             </div>
         </div>
         <!-- Sidebar Menu-->
@@ -23,13 +23,14 @@
             -->
             <!-- <li><a href="charts.html"><i class="fa fa-pie-chart"></i><span>Charts</span></a></li> -->
 
-            <li class="treeview"><a href="#"><i class="fa fa-edit"></i><span>Gerenciar</span><i class="fa fa-angle-right"></i></a>
+            <li class="treeview"><a href="#"><i class="fa fa-edit"></i><span> Cadastrar </span><i class="fa fa-angle-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="CadastroAluno.php"><i class="fa fa-circle-o"></i> Aluno</a></li>                
-                    <li><a href="CadastroCurso.php"><i class="fa fa-circle-o"></i> Curso</a></li>
-                    <li><a href="CadastroMateria.php"><i class="fa fa-circle-o"></i> Matéria</a></li>
-                    <li><a href="CadastroProfessor.php"><i class="fa fa-circle-o"></i> Professor</a></li>
-                    <li><a href="CadastroAdministrador.php"><i class="fa fa-circle-o"></i> Administrador</a></li>
+                    
+                    <li><a href= <?php echo "CadastroAluno.php?id=$id" ?> ><i class="fa fa-circle-o"></i> Aluno</a></li>                
+                    <li><a href= <?php echo "CadastroCurso.php?id=$id" ?> ><i class="fa fa-circle-o"></i> Curso</a></li>
+                    <li><a href= <?php echo "CadastroMateria.php?id=$id" ?> ><i class="fa fa-circle-o"></i> Matéria</a></li>
+                    <li><a href= <?php echo "CadastroProfessor.php?id=$id" ?>  ><i class="fa fa-circle-o"></i> Professor</a></li>
+                    <li><a href= <?php echo "CadastroAdministrador.php?id=$id" ?>  ><i class="fa fa-circle-o"></i> Administrador</a></li>
 
                 </ul>			  
             </li>
@@ -37,23 +38,24 @@
             <li class="treeview"><a href="#"><i class="fa fa-edit"></i><span>Alterar</span><i class="fa fa-angle-right"></i></a>
                 <ul class="treeview-menu">
 
-                    <li><a href="AlterarCadastroAluno.php"><i class="fa fa-circle-o"></i> Aluno </a></li>				
+                    <li><a href= <?php echo "AlterarCadastroAluno.php?id=$id" ?> ><i class="fa fa-circle-o"></i> Aluno </a></li>				
                     <li><a href="AlterarCadastroCurso.php"><i class="fa fa-circle-o"></i> Curso</a></li> 
                     <li><a href="AlterarCadastroMateria.php"><i class="fa fa-circle-o"></i> Materia</a></li>  
                     <li><a href="AlterarCadastroProfessor.php"><i class="fa fa-circle-o"></i> Professor</a></li> 
                     <li><a href="AlterarCadastroAdministrador.php"><i class="fa fa-circle-o"></i> Administrador </a></li> 
+                
                 </ul>			  
             </li>
 
             <li class="treeview"><a href="#"><i class="fa fa-th-list"></i><span>Informações</span><i class="fa fa-angle-right"></i></a>
                 <ul class="treeview-menu">
-                    
+
                     <li><a href="table-data-table.html"><i class="fa fa-circle-o"></i> Alunos </a></li>
                     <li><a href="table-data-table.html"><i class="fa fa-circle-o"></i> Cursos </a></li>
                     <li><a href="table-data-table.html"><i class="fa fa-circle-o"></i> Matérias </a></li>
                     <li><a href="table-data-table.html"><i class="fa fa-circle-o"></i> Professores </a></li>
                     <li><a href="table-data-table.html"><i class="fa fa-circle-o"></i> Administradores </a></li>
-                    
+
                 </ul>
             </li>
 
@@ -61,7 +63,7 @@
                 <ul class="treeview-menu">
 
                     <li><a href="page-login.html"><i class="fa fa-circle-o"></i> Conteúdo não disponível </a></li>
-                   
+
 
                 </ul>
             </li>

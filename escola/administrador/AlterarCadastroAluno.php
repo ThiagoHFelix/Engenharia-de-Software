@@ -15,6 +15,31 @@
 
     </head>
     <body>
+        
+              <?php
+   // Verifica se a pagina foi chamada durante uma sessão, se não foi, não é possivel acessa-lá 
+        
+            session_start();
+        
+            $id = filter_input(INPUT_GET, id);
+      
+            if(isset($_SESSION['id']))
+            {
+                
+                if($id != $_SESSION['id']){
+                    header("location:../index.php");
+                }//if
+                
+            }//if
+            else {
+                
+                header("location:../login-escola/");
+                
+            }//else
+            
+            
+        ?>
+        
         <div class="wrapper">
             <!-- Navbar-->
             <?php

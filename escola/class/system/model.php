@@ -31,15 +31,14 @@ class model {
 
 
    //=============================================================================================         
-            //  procura na tabela do administrador 
-            $sql = " select P.CPF,P.Senha from Administrador A, Pessoa P where P.CPF = A.cpf  ";
+            $sql = " select cpf,senha from Pessoa";
 
             $query = mysqli_query($con, $sql);
               
             while ($resultado = mysqli_fetch_array($query)) {
 
                
-                if ($id == $resultado['CPF'] && $senha == $resultado['Senha']) {
+                if ($id == $resultado['cpf'] && $senha == $resultado['senha']) {
                     
                     
                     mysqli_close($con);
@@ -62,7 +61,7 @@ class model {
         
         catch (SQLException $ex) {
             
-            return "Erro: ".$ex->getMessage();
+            //return "Erro: ".$ex->getMessage();
             
         }//catch
         
@@ -112,6 +111,156 @@ class model {
         
     }//cadastraPessoa
     
+   
+    /**
+     * Busca informações de uma pessoa no banco de dados
+     * @param type $id
+     * @param type $senha
+     * @return type Retorna false, se não for possivel acessar o banco de dados, uma string
+     * quando usuário não encontrado, ou, se encontrar, retorna um array com as infromações
+     */
+    public function buscaPessoa($id,$senha){
+        
+        try{
+            
+           $con = mysqli_connect("localhost", "root", "FELIXlix_9809", "SistemaEcolarShalon");
+            
+            if (mysqli_connect_errno()) {
+
+               //"Erro ao fazer a conexão com o banco de dados ". mysqli_connect_error();
+                
+                return false;
+                
+            }//IF
+            
+            
+            $sql = "select cpf,senha,rg,bairro,cidade,estado,rua,cep,primeironome,nascimento,sobrenome from Pessoa";
+            
+            $query = mysqli_query($con, $sql);
+            
+            while($resultado = mysqli_fetch_array($query)){
+                
+                if( $resultado['cpf'] == $id && $resultado['senha'] == $senha){
+                    
+                    $infoPessoa['cpf'] = $resultado['cpf'];
+                    $infoPessoa['senha'] = $resultado['senha'];
+                    $infoPessoa['rg'] = $resultado['rg'];
+                    $infoPessoa['bairro'] = $resultado['bairro'];
+                    $infoPessoa['cidade'] = $resultado['cidade'];
+                    $infoPessoa['estado'] = $resultado['estado'];
+                    $infoPessoa['rua'] = $resultado['rua'];
+                    $infoPessoa['cep'] = $resultado['cep'];
+                    $infoPessoa['primeironome'] = $resultado['primeironome'];
+                    $infoPessoa['nascimento'] = $resultado['nascimento'];
+                    $infoPessoa['sobrenome'] = $resultado['sobrenome'];
+                    
+                    mysqli_close($con);
+                    
+                    return $infoPessoa;
+                    
+                }//if
+                
+                
+            }//WHILE
+            
+            mysqli_close($con);
+            return "Usuário não encontrado";
+            
+        }//try
+        catch(SQLException $ex){
+            
+            //FIXIT registrar em um log
+          //  "Erro: ".$ex->
+            
+        }//catch
+        
+        
+    }//buscaPessoa
+    
+    /**
+     * Verifica qual entidade é a pessoa, Administrador, Aluno ou Professor
+     * @param type $id CPF da pessoa
+     * @return string Retorna uma string do tipo da pessoa
+     */
+    public function getPessoaTipo($id){
+        
+        try{
+            
+            $con = mysqli_connect("localhost", "root", "FELIXlix_9809", "SistemaEcolarShalon");
+            
+            if (mysqli_connect_errno()) {
+
+               //"Erro ao fazer a conexão com o banco de dados ". mysqli_connect_error();
+                
+                return false;
+                
+            }//IF
+            
+            
+            
+            //XXX Teste tabela ADMINISTRADOR =============================================================
+            $sql = "select cpf from Administrador" ;
+            
+            $query = mysqli_query($con,$sql);
+            
+            while($resultado = mysqli_fetch_array($query)){
+                
+                if($id == $resultado['cpf']){
+                    
+                    mysqli_close($con);
+                    return "Administrador";
+                    
+                }//if
+                
+                
+            }//While
+            
+            
+            //XXX Teste tabela Aluno =============================================================
+            $sql = "select cpf from Aluno" ;
+            
+            $query = mysqli_query($con,$sql);
+            
+            while($resultado = mysqli_fetch_array($query)){
+                
+                 if(strcmp($id,$resultado['cpf']) == 0){
+                    
+                    mysqli_close($con);
+                    return "Aluno";
+                    
+                }//if
+                
+            }//While
+            
+             //XXX Teste tabela Professor =============================================================
+            $sql = "select cpf from Professor";
+            
+            $query = mysqli_query($con,$sql);
+            
+            while($resultado = mysqli_fetch_array($query)){
+                
+                 if(strcmp($id,$resultado['cpf']) == 0){
+                    
+                    mysqli_close($con);
+                    return "Professor";
+                    
+                }//if
+                
+            }//While
+            
+            mysqli_close($con);
+            return "Entidade não encontrada";
+            
+       }//try
+       
+       catch(SQLException $ex){
+           
+           
+           
+       }//catch
+        
+        
+    }//getPessoaTipo
     
     
 

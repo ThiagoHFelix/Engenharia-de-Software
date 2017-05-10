@@ -4,8 +4,8 @@
         <div class="user-panel">
             <div class="pull-left image"><img class="img-circle" src="../imagens/user.png" alt="User Image"></div>
             <div class="pull-left info">
-                <p>Nome</p>
-                <p class="designation"> Administrador </p>
+                <p><?php echo $_SESSION['primeironome']." ".$_SESSION['sobrenome'];?></p>
+                <p class="designation"> <?php echo $_SESSION['entidade']; ?> </p>
             </div>
         </div>
         <!-- Sidebar Menu-->

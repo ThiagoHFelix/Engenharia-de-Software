@@ -16,7 +16,7 @@
         
         <?php
         
-          //  session_start();
+           session_start();
         
             $id = filter_input(INPUT_GET, id);
       

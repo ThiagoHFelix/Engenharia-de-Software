@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home - Administrador</title>
+        <title>Home</title>
         <meta charset="utf-8">    
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +14,8 @@
     <body>
         
         
-        <?php
+              <?php
+   // Verifica se a pagina foi chamada durante uma sessão, se não foi, não é possivel acessa-lá 
         
             session_start();
         
@@ -24,13 +25,13 @@
             {
                 
                 if($id != $_SESSION['id']){
-                    header("location:../index.php");
+                    header("location:../login-escola/");
                 }//if
                 
             }//if
             else {
                 
-                header("location:../index.php");
+                header("location:../login-escola/");
                 
             }//else
             
@@ -57,8 +58,8 @@
             <div class="content-wrapper">
                 <div class="page-title">
                     <div>
-                        <h1><i class="fa fa-edit"></i> Tela Inicial do Adminstrador - Sistema Escolar </h1>
-                        <p>Subtitulor</p>
+                        <h1><i class="fa fa-edit"></i> <?php echo 'Seja bem-vindo(a) '.strtoupper($_SESSION['primeironome']).' '.strtoupper($_SESSION['sobrenome']); ?> </h1>
+                        <p><?php echo 'Mostar data e dia da semana';?></p>
                     </div>
                     <div>
                         <ul class="breadcrumb">

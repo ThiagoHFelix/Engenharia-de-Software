@@ -29,19 +29,19 @@
                 else {
 
                     document.getElementById("aviso").innerHTML = "Carregando...";
-                    
-                    envia_dados(id,senha);
-                    
+
+                    envia_dados(id, senha);
+
                 }// ELSE   	   
 
             }// valida_dados
 
 
             function envia_dados(id, senha) {
-                
+
                 var id = id;
                 var senha = senha;
-        
+
                 //Define o formulário
                 var myForm = document.createElement("form");
                 myForm.action = "login.php";
@@ -75,21 +75,37 @@
 
 
         </script>  
-        
+
         <?php
-        
         GLOBAL $aviso;
-        
-           $id = filter_input(INPUT_GET, id);
+
+        $id = filter_input(INPUT_GET, id);
           
-           if($id == 404)
-           {
-              
-               $aviso = "Dados incorretos";
-               
-               
-           }//if
         
+        session_start();
+
+        //Verfica se uma sessão já foi iniciada, se foi redireciona para pagina inical
+        if (isset($_SESSION['id'])) {
+
+            $num = $_SESSION['id'];
+            
+            if (strcmp($_SESSION['entidade'], "Administrador") == 0) {
+                header("location: ../administrador/index.php?id=$num");
+            }//if
+            elseif (strcmp($_SESSION['entidade'], "Aluno") == 0) {
+                header("location:../aluno/index.php?id=$num");
+            }//elseif
+            elseif (strcmp($_SESSION['entidade'], "Professor") == 0) {
+                header("location:../professor/index.php?id=$num");
+            }//elseif
+            
+        }//if
+        //Tratamento de um código de erro
+        if ($id == 150) {
+
+            $aviso = "Dados incorretos";
+            
+        }//if
         ?>
 
         <div class="login">
