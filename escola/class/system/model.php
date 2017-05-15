@@ -134,29 +134,30 @@ class model {
             }//IF
             
             
-            $sql = "select cpf,senha,rg,bairro,cidade,estado,rua,cep,primeironome,nascimento,sobrenome from Pessoa";
+            $sql = "select rp,cpf,senha,rg,bairro,cidade,estado,rua,cep,primeironome,nascimento,sobrenome from Pessoa, telefone where pessoa.cpf = telefone.cpf";
             
             $query = mysqli_query($con, $sql);
+            
             
             while($resultado = mysqli_fetch_array($query)){
                 
                 if( $resultado['cpf'] == $id && $resultado['senha'] == $senha){
                     
-                    $infoPessoa['cpf'] = $resultado['cpf'];
-                    $infoPessoa['senha'] = $resultado['senha'];
-                    $infoPessoa['rg'] = $resultado['rg'];
-                    $infoPessoa['bairro'] = $resultado['bairro'];
-                    $infoPessoa['cidade'] = $resultado['cidade'];
-                    $infoPessoa['estado'] = $resultado['estado'];
-                    $infoPessoa['rua'] = $resultado['rua'];
-                    $infoPessoa['cep'] = $resultado['cep'];
-                    $infoPessoa['primeironome'] = $resultado['primeironome'];
-                    $infoPessoa['nascimento'] = $resultado['nascimento'];
-                    $infoPessoa['sobrenome'] = $resultado['sobrenome'];
+                    $cpf = $resultado['cpf'];
+                    $senha = $resultado['senha'];
+                    $rg = $resultado['rg'];
+                    $bairro = $resultado['bairro'];
+                    $cidade = $resultado['cidade'];
+                    $estado = $resultado['estado'];
+                    $rua = $resultado['rua'];
+                    $cep = $resultado['cep'];
+                    $primeironome = $resultado['primeironome'];
+                    $nascimento = $resultado['nascimento'];
+                    $sobrenome = $resultado['sobrenome'];
                     
                     mysqli_close($con);
                     
-                    return $infoPessoa;
+                    return new pessoa($id, $rg, $bairro, $cidade, $estado, $rua, $cep, $primeironome, $sobrenome, $nascimento, $senha, null);
                     
                 }//if
                 
