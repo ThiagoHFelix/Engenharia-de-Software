@@ -23,7 +23,7 @@
          $_SESSION["resposta"] = '';   
     }elseif($_SESSION["resposta"] == 'true'){
          echo "<script type='text/javascript'>
-             alert('Procediem cadastrado com sucesso!');
+             alert('Procedimento cadastrado com sucesso!');
          </script>";
          $_SESSION["resposta"] = '';
     }
@@ -44,9 +44,23 @@
     script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
     -->
     <script type="text/javascript">
-      function cadastrar() {
-              document.getElementById("cad_proc").submit();
-      }      
+            
+
+      function exibir_form(cpf){
+          document.getElementById("verifica_cpf").style.display = "none";
+          document.getElementById("cpf").style.display = "none";
+          document.getElementById("cpf").value = cpf;
+          document.getElementById("cad_proc").style.display = "block";
+          document.getElementById("bt_cad").style.display = "inline";
+          document.getElementById("bt_can").style.display = "inline";
+      }
+
+      function cancelar(){
+        var r = confirm("Você tem certeza que quer sair da página?");
+        if(r == true){
+          window.location.href = "adm.php";
+        }
+      }
     </script>
 
   </head>
@@ -72,40 +86,48 @@
             <div class="card">
               <h3 class="card-title">Cadastrar Procedimento</h3>
               <div class="card-body">
-              <!--Formulário de cadastro de procedimento-->
-                <form action="../Controller/cad_proc.php" method="post" id="cad_proc">
+                <form method="post" id="verifica_cpf" style="display:block;">
                   <div class="form-group">
-                    <label class="control-label">CPF</label>	  	
-                    <input class="form-control" type="text" name="cpf" id="cpf" placeholder="CPF do cliente">
+                    <label class="control-label">CPF</label>      
+                    <input class="form-control" type="text" placeholder="CPF do cliente" name="ver_cpf" id="ver_cpf">
                   </div>
+                  <div class="form-group">
+                    <input type="submit"  value="Procurar CPF">
+                  </div>
+                </form>
+              <!--Formulário de cadastro de procedimento-->
+                <form action="../Controller/cad_proc.php" method="post" id="cad_proc" style="display:none;">
+                 	  	
+                  <input class="form-control" type="text" name="cpf" id="cpf" placeholder="CPF do cliente">
+                  
 				          <div class="form-group">
                     <label class="control-label">Marca</label>
-                    <input class="form-control" type="text" name="marca" id="marca" placeholder="Marca do produto">
+                    <input class="form-control" type="text" name="marca" id="marca" placeholder="Marca do produto" required>
                   </div>
                   <div class="form-group">
                     <label class="control-label">Tipo de OX</label>
-                     <input class="form-control" type="text" name="ox" id="ox" placeholder="Tipo de OX">
+                     <input class="form-control" type="text" name="ox" id="ox" placeholder="Tipo de OX" required>
                   </div>
 				          <div class="form-group">
                     <label class="control-label">Resultado</label>
-                    <input class="form-control" type="text" name="res" id="res" placeholder="Resultado">
+                    <input class="form-control" type="text" name="res" id="res" placeholder="Resultado" required>
                   </div>
 				          <div class="form-group">
                     <label class="control-label">Nome do Procedimento</label>
-                    <input class="form-control" type="text" name="nproc" id="nproc" placeholder="Nome do Procedimento">
+                    <input class="form-control" type="text" name="nproc" id="nproc" placeholder="Nome do Procedimento" required>
                   </div>
 				          <div class="form-group">
                     <label class="control-label">Pontuação</label>
-                    <input class="form-control" type="text" name="pont" id="pont" placeholder="Pontuação">
+                    <input class="form-control" type="text" name="pont" id="pont" placeholder="Pontuação" required>
                   </div>
 				          <div class="form-group">
                     <label class="control-label">Tipo</label>
-                    <input class="form-control" type="text" name="tipo" id="tipo" placeholder="Tipo">
-                  </div>                
+                    <input class="form-control" type="text" name="tipo" id="tipo" placeholder="Tipo" required>
+                  </div>               
                 </form>
               </div>
               <div class="card-footer">
-                <button class="btn btn-primary icon-btn" type="button" onclick="cadastrar();"><i class="fa fa-fw fa-lg fa-check-circle"></i>Cadastrar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-default icon-btn" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+                <button class="btn btn-primary icon-btn" type="submit" form="cad_proc" style="display:none;" id="bt_cad" type="button" ><i class="fa fa-fw fa-lg fa-check-circle"></i>Cadastrar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-default icon-btn" id="bt_can" style="display:none;" href="#" onclick="cancelar()"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
               </div>
             </div>
           </div>
@@ -120,5 +142,19 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/pace.min.js"></script>
     <script src="js/main.js"></script>
+    <?php
+      include_once("../Controller/verifica_cpf.php");
+
+      if(isset($_POST["ver_cpf"])){  
+        if(verifica_cpf($_POST["ver_cpf"]) == 'false'){
+             #echo "<script type='text/javascript'>alert('".verifica_cpf($_POST["ver_cpf"])."');</script>";   
+             echo "<script type='text/javascript'>alert('CPF  não encontrado ou inválido');</script>";   
+             #$_SESSION["resposta"] = '';   
+        }elseif(verifica_cpf($_POST["ver_cpf"]) == 'true'){
+             echo "<script type='text/javascript'>exibir_form('".$_POST["ver_cpf"]."');</script>";
+             #$_SESSION["resposta"] = '';
+        }
+      }
+    ?>
   </body>
 </html>

@@ -11,7 +11,7 @@
 
   */
 
-
+include_once("../Controller/gerenciar_agenda.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,8 +34,8 @@
     </script>
  
   </head>
-   <?php
-	include_once("cabecalho.php");
+  <?php
+	   include_once("cabecalho.php");
   ?>
       <div class="content-wrapper">
         <div class="page-title">
@@ -57,34 +57,53 @@
               <h3 class="card-title" style="margin-bottom:0px;">Agendar</h3>              
               <div class="card-body">   
               <form method="get" id='form_data'>
-                <div class='form-group'>            
-                    <label class="control-label">Selecione a data</label>          
-                    <input class='form-control' type='date' name='data' id='data' onblur="procurar();">
-                </div> 
+                <div class='form-group'>                                             
+                  <label class="control-label">Selecione a data</label>          
+                  <input class='form-control' type='date' name='data' id='data'>                  
+                </div>
+                <div class='form-group'>                                         
+                  <input class='form-control' type='submit' value='Procurar' name='bt_data' id='bt_data' onclick="procurar();">        
+                </div>
               </form>              
                   <?php
+
+                  if(isset($_GET['st']) and isset($_GET['id'])){
+                    gerenciar_agenda($_GET['st'],$_GET['id']);
+                  }   
+
                   if(isset($_GET['data'])){
 
                   $connect = mysqli_connect('localhost','root','', 'projeto shalon');
-                  $result = mysqli_query($connect, "select p.nome, cs.Servico, cs.hora from cliente c, consulta cs, pessoa p where cs.data = '".$_GET['data']."' and cs.Id_cliente = c.Id and c.CPF = p.CPF and cs.status = 'a'");
+                  $result = mysqli_query($connect, "select p.nome, cs.Servico, cs.hora, cs.status, cs.ID from cliente c, consulta cs, pessoa p where cs.data = '".$_GET['data']."' and cs.Id_cliente = c.Id and c.CPF = p.CPF");
                       if(mysqli_num_rows($result) == 0){
                         echo "<script type='text/javascript'>
                                   alert('Nenhum procedimento encontrado');
                               </script>";                        
                       }else{
-                        echo "<table class= 'table table-striped'>";
+                        echo "<table class= 'table'>";
                         echo "<thead>";
                         echo " <tr>";
                         echo    "<th>Cliente</th>";
                         echo    "<th>Procedimento</th>";
                         echo    "<th>Data</th>";                                                
+                        echo    "<th>Status</th>";  
+                        echo    "<th>Ações</th>";                                                
                         echo  "</tr>";
                         echo "</thead>";
                         while($row = mysqli_fetch_assoc($result)){
-                            echo "<tr><td>".$row['nome']."</td><td>".$row['Servico']."</td><td>".$row['hora']."</td></tr>";        
+                          if($row['status']=='a'){
+                            echo "<tr><td>".$row['nome']."</td><td>".$row['Servico']."</td><td>".$row['hora']."</td><td>Marcado</td><td class='actions'>
+                                  <a data-toggle='tooltip' title='Realizar consulta' class='btn btn-warning btn-xs' href='listar_agenda.php?st=r&id=".$row['ID']."&data=".$_GET['data']."'><i class='fa fa-check-square-o' aria-hidden='true'></i></a>
+                                  <a data-toggle='tooltip' title='Cancelar consulta' class='btn btn-danger btn-xs' href='listar_agenda.php?st=c&id=".$row['ID']."&data=".$_GET['data']."'><i class='fa fa-times' aria-hidden='true'></i></a></td></tr>";        
+                          }elseif($row['status']=='r'){
+                            echo "<tr><td>".$row['nome']."</td><td>".$row['Servico']."</td><td>".$row['hora']."</td><td>Realizado</td><td></td></tr>";
+                          }elseif($row['status']=='c'){
+                            echo "<tr><td>".$row['nome']."</td><td>".$row['Servico']."</td><td>".$row['hora']."</td><td>Cancelado</td><td></td></tr>";
+                        }
                       }
                     }
-                  }                 
+                  }    
+                          
                   ?>
               </div>                        
             </div>
@@ -98,5 +117,10 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/pace.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+      $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();   
+      });
+    </script>
   </body>
 </html>

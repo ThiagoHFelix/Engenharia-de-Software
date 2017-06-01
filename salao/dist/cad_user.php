@@ -145,7 +145,7 @@
                             <input class="form-control" id="cel" type="tel"  name="cel" placeholder="Celular" required>                            
                           </div>
                         </div>                    
-            					  <!--<div class="form-group">					
+            					  <div class="form-group">					
               						<label class="col-lg-2 control-label">Escolher foto</label>
               						   <div class="col-lg-10">
               								<input class="form-control" type="file">
@@ -156,8 +156,9 @@
               						  <label class="col-sm-3 control-label">						  
               							<input type="checkbox">Aceitar os termos
               						  </label>
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
               						</div>
-            					  </div>-->
+            					  </div>
                         <div class="form-group">
                           <div class="col-lg-10 col-lg-offset-2">
                             <button class="btn btn-default" onclick="voltar();" type="reset">Cancelar</button>
@@ -165,6 +166,27 @@
                           </div>
                         </div>                     
                     </form>
+                    <div class="modal-content">
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
     </div>
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/essential-plugins.js"></script>

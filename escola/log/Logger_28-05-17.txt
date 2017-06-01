@@ -1,0 +1,77 @@
+[00:29:34][127.0.0.1]: insert into Pessoa values(3671,'qwdqwdqw','qwdqwd','1960/1/1',545.151.651-56,'651116514','1',1,'qwdqwdqwd','qwdqwdqwd','45151-561','4qwdqwdqwdqwd','qwdqwdqwd','') 
+[00:29:34][127.0.0.1]: Erro gerado no registro de uma Pessoa: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.651-56,'651116514','1',1,'qwdqwdqwd','qwdqwdqwd','45151-561','4qwdqwdqwdqwd','q' at line 1 
+[00:29:34][127.0.0.1]: Erro ao cadastrar pessoa 
+[02:06:55][127.0.0.1]: Não foi possivel encontrar o Telefone do CPF: 44512451498 	 Error : 
+[02:06:55][127.0.0.1]: Não foi possivel encontrar o Email do CPF: 44512451498 	 Error : 
+[08:25:27][127.0.0.1]: Não foi possivel encontrar o Telefone do CPF: 44512451498 	 Error : 
+[08:25:27][127.0.0.1]: Não foi possivel encontrar o Email do CPF: 44512451498 	 Error : 
+[08:43:14][127.0.0.1]: insert into Pessoa values(1,'Thiago','Henrique Felix','1960/1/1',444.885.454-79,'454548787','1',1,'SP','Das Palmeiras Verdes','54548-784','Dos Lirios Andantes','Americana','') 
+[08:43:14][127.0.0.1]: Erro gerado no registro de uma Pessoa: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.454-79,'454548787','1',1,'SP','Das Palmeiras Verdes','54548-784','Dos Lirios An' at line 1 
+[08:43:14][127.0.0.1]: Erro ao cadastrar pessoa 
+[08:44:57][127.0.0.1]: insert into Pessoa values(1,'Thiago','Henrique Felix','1960/1/1','444.885.454-79','454548787','1',1,'SP','Das Palmeiras Verdes','54548-784','Dos Lirios Andantes','Americana','') 
+[08:44:57][127.0.0.1]: Erro gerado no registro de uma Pessoa: Data too long for column 'CPF' at row 1 
+[08:44:57][127.0.0.1]: Erro ao cadastrar pessoa 
+[08:47:36][127.0.0.1]: insert into Pessoa values(1,'Thiago','Henrique Felix','1960/1/1','444.885.454-79','454548787','1',1,'SP','Das Palmeiras Verdes','54548-784','Dos Lirios Andantes','Americana','') 
+[08:47:36][127.0.0.1]: insert into Telefone values (1,'residencia','(19) 3467-1054' ) 
+[08:47:36][127.0.0.1]: Erro ao cadastrar Telefone de: Thiago 	 Error:Data too long for column 'numero' at row 1 
+[08:47:36][127.0.0.1]: Erro ao cadastrar pessoa 
+[08:49:39][127.0.0.1]: insert into Pessoa values(1,'Thiago','Henrique Felix','1960/1/1','444.885.454-79','454548787','1',1,'SP','Das Palmeiras Verdes','54548-784','Dos Lirios Andantes','Americana','') 
+[08:49:39][127.0.0.1]: insert into Telefone values (1,'residencia','(19) 3467-1054' ) 
+[08:49:39][127.0.0.1]: Erro ao cadastrar Telefone de: Thiago 	 Error:Data too long for column 'numero' at row 1 
+[08:49:39][127.0.0.1]: Erro ao cadastrar pessoa 
+[08:54:40][127.0.0.1]: insert into Pessoa values(1,'Thiago','Henrique Felix','1960/1/1','444.885.454-79','454548787','1',1,'SP','Das Palmeiras Verdes','54548-784','Dos Lirios Andantes','Americana','') 
+[08:54:40][127.0.0.1]: Sucesso ao cadastrar pessoa 
+[08:54:40][127.0.0.1]: insert into Administrador values (1,1)  
+[08:54:49][127.0.0.1]: Não foi possivel encontrar o Telefone do CPF: 444 	 Error : 
+[08:54:49][127.0.0.1]: Não foi possivel encontrar o Email do CPF: 444 	 Error : 
+[08:58:11][127.0.0.1]: Não foi possivel encontrar o Telefone do CPF: 444 	 Error : 
+[08:58:11][127.0.0.1]: Não foi possivel encontrar o Email do CPF: 444 	 Error : 
+[09:02:26][127.0.0.1]: Não foi possivel encontrar o Telefone do CPF: 444 	 Error : 
+[09:02:26][127.0.0.1]: Não foi possivel encontrar o Email do CPF: 444 	 Error : 
+[09:04:37][127.0.0.1]: Não foi possivel encontrar o Telefone do CPF: 444 	 Error : 
+[09:04:37][127.0.0.1]: Não foi possivel encontrar o Email do CPF: 444 	 Error : 
+[09:04:47][127.0.0.1]: Não foi possivel encontrar o Telefone do CPF: 444 	 Error : 
+[09:04:47][127.0.0.1]: Não foi possivel encontrar o Email do CPF: 444 	 Error : 
+[09:12:23][127.0.0.1]: insert into Pessoa values(2,'Guilder','','1960/1/1','545.454.545-45','','1',1,'','','','','','') 
+[09:12:23][127.0.0.1]: Sucesso ao cadastrar pessoa 
+[09:12:23][127.0.0.1]: insert into Administrador values (2,2)  
+[09:13:07][127.0.0.1]: insert into Pessoa values(3,'Yaguir','','1960/1/31','12.312.334-55','','1',1,'','','','','','') 
+[09:13:07][127.0.0.1]: Sucesso ao cadastrar pessoa 
+[09:13:07][127.0.0.1]: insert into Administrador values (3,3)  
+[09:14:39][127.0.0.1]: insert into Pessoa values(4,'João','','1960/1/31','668.788.878-99','','1',1,'','','','','','') 
+[09:14:39][127.0.0.1]: Sucesso ao cadastrar pessoa 
+[09:14:39][127.0.0.1]: insert into Administrador values (4,4)  
+[09:53:20][127.0.0.1]: insert into Pessoa values(5,'Ronaldo','','1960/1/1','767.878.678-65','','1',1,'','','','','','') 
+[09:53:20][127.0.0.1]: Sucesso ao cadastrar pessoa 
+[09:53:20][127.0.0.1]: insert into Administrador values (5,5)  
+[09:53:41][127.0.0.1]: insert into Pessoa values(6,'Ronald ','','1960/1/1','844.484.848-48','','1',1,'','','','','','') 
+[09:53:41][127.0.0.1]: Sucesso ao cadastrar pessoa 
+[09:53:41][127.0.0.1]: insert into Administrador values (6,6)  
+[10:01:06][127.0.0.1]: insert into Pessoa values(7,'Nadia','','1960/1/1','676.765.656-53','','1',1,'','','','','','') 
+[10:01:06][127.0.0.1]: Sucesso ao cadastrar pessoa 
+[10:01:06][127.0.0.1]: insert into Administrador values (7,7)  
+[10:01:43][127.0.0.1]: insert into Pessoa values(8,'Nadia','','1960/1/1','676.765.656-56','','1',1,'','','','','','') 
+[10:01:44][127.0.0.1]: Sucesso ao cadastrar pessoa 
+[10:01:44][127.0.0.1]: insert into Administrador values (8,8)  
+[10:01:54][127.0.0.1]: insert into Pessoa values(9,'Nadia','','1960/1/1','676.765.656-56','','1',1,'','','33232-335','','','') 
+[10:01:55][127.0.0.1]: Erro gerado no registro de uma Pessoa: Duplicate entry '676.765.656-56' for key 'CPF' 
+[10:01:55][127.0.0.1]: Erro ao cadastrar pessoa 
+[10:02:11][127.0.0.1]: insert into Pessoa values(9,'Nadia','','1960/1/1','676.765.656-56','','1',1,'','','33232-335','','','') 
+[10:02:11][127.0.0.1]: Erro gerado no registro de uma Pessoa: Duplicate entry '676.765.656-56' for key 'CPF' 
+[10:02:11][127.0.0.1]: Erro ao cadastrar pessoa 
+[10:03:33][127.0.0.1]: insert into Pessoa values(9,'Nadia','','1960/1/1','676.765.656-57','','1',1,'','','33232-335','','','') 
+[10:03:33][127.0.0.1]: Sucesso ao cadastrar pessoa 
+[10:03:33][127.0.0.1]: insert into Administrador values (9,9)  
+[10:15:31][127.0.0.1]: insert into Pessoa values(10,'','','','234.234.234-23','','1',1,'','','','','','') 
+[10:15:31][127.0.0.1]: Erro gerado no registro de uma Pessoa: Incorrect date value: '' for column 'nascimento' at row 1 
+[10:16:20][127.0.0.1]: insert into Pessoa values(10,'','','1960/1/1','234.234.234-23','','1',1,'','','','','','') 
+[10:33:04][127.0.0.1]: insert into Pessoa values(11,'','SIlvera','1960/1/1','448.787.554-87','548484787','q',1,'SP','Das Palmeiras Verdes','54848-484','Dos Lirios Andantes','Americana','') 
+[10:35:59][127.0.0.1]: insert into Pessoa values(12,'','de Freitas','1960/1/1','345.656.734-34','','1',1,'SP','Das Almas','34545-568','Dos Lirios Andantes','Americana','') 
+[11:25:18][127.0.0.1]: insert into Pessoa values(13,'','','','345.345.345-32','','1',1,'','','','','','') 
+[11:25:19][127.0.0.1]: Erro gerado no registro de uma Pessoa: Incorrect date value: '' for column 'nascimento' at row 1 
+[11:27:10][127.0.0.1]: insert into Pessoa values(13,'Ronald','','1960/1/1','345.345.345-32','','1',1,'','','','','','') 
+[11:35:06][127.0.0.1]: insert into Pessoa values(14,'Guilard','','1960/1/1','211.231.231-23','','1',1,'','','','','','') 
+[11:37:06][127.0.0.1]: insert into Pessoa values(15,'Yagui','','1960/1/1','231.231.231-23','','1',1,'','','','','','') 
+[11:38:45][127.0.0.1]: insert into Pessoa values(16,'Hunger','','1960/1/1','345.666.664-66','','1',1,'','','','','','') 
+[11:40:18][127.0.0.1]: insert into Pessoa values(17,'Fulger','','1960/1/1','456.456.475-67','','1',1,'','','','','','') 
+[11:46:05][127.0.0.1]: insert into Pessoa values(18,'Ronaldo','','1960/1/1','123.234.344-44','','1',1,'','','','','','') 

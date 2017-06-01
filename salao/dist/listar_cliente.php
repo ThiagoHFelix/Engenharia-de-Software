@@ -10,7 +10,7 @@
     Página com o formulário de agendamento.
 
   */
-
+ 
 
 ?>
 <!DOCTYPE html>
@@ -40,7 +40,7 @@
       <div class="content-wrapper">
         <div class="page-title">
           <div>
-            <h1><i class="fa fa-edit"></i> Atualizar Diagnóstico</h1>
+            <h1><i class="fa fa-edit"></i> Lista de clientes</h1>
             
           </div>
           <div>
@@ -60,11 +60,9 @@
                   <?php                 
 
                   $connect = mysqli_connect('localhost','root','', 'projeto shalon');
-                  $result = mysqli_query($connect, "select p.nome, c.cpf from cliente c, pessoa p where c.cpf = p.cpf ");
+                  $result = mysqli_query($connect, "select p.nome, c.cpf  from cliente c, pessoa p where c.cpf = p.cpf ");
                       if(mysqli_num_rows($result) == 0){
-                        echo "<script type='text/javascript'>
-                                  alert('Nenhum procedimento encontrado');
-                              </script>";                        
+                        echo "<div class='container'><div class='row'><span class='label label-danger'>Nenhum cliente cadastrado</span></div>";                        
                       }else{
                         echo "<table class= 'table table-striped'>";
                         echo "<thead>";
@@ -74,9 +72,10 @@
                         echo  "</tr>";
                         echo "</thead>";
                         while($row = mysqli_fetch_assoc($result)){
-                            echo "<tr><td>".$row['nome']."</td><td>".$row['cpf']."</td></tr>";        
-                      }
-                    }                                  
+                            echo "<tr><td>".$row['nome']."</td><td>".$row['cpf']."</td><td><a data-toggle='tooltip' title='Visualizar dados' class='btn btn-success btn-xs' href='view_cliente.php?cpf=".$row['cpf']."'><i class='fa fa-eye' aria-hidden='true'></i></a></td></tr>";        
+                        }
+                      } 
+                                                    
                   ?>
               </div>                        
             </div>
@@ -90,5 +89,10 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/pace.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+      $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();   
+      });
+    </script>
   </body>
 </html>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
     <head>
         <title>Home</title>
         <meta charset="utf-8">    
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
-        <meta name="author" content="">
+        
         <!-- CSS-->
         <link rel="stylesheet" type="text/css" href="../css/main.css">
 
@@ -58,7 +58,7 @@
             <div class="content-wrapper">
                 <div class="page-title">
                     <div>
-                        <h1><i class="fa fa-edit"></i> <?php echo 'Seja bem-vindo(a) '.strtoupper($_SESSION['primeironome']).' '.strtoupper($_SESSION['sobrenome']); ?> </h1>
+                        <h1><i class="fa fa-edit"></i> <?php echo 'Seja bem-vindo(a) '.strtoupper($_SESSION['nome']).' '.strtoupper($_SESSION['sobrenome']); ?> </h1>
                         <p><?php echo 'Mostar data e dia da semana';?></p>
                     </div>
                     <div>

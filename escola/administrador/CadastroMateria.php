@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Protótipo tela de alteração de dados</title>
+        <title>Cadastro de matéria</title>
         <meta charset="utf-8">    
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,119 +70,70 @@
                             <div class="row">
                                 <div class="col-lg-10">
                                     <div class="well bs-component">	
-                                        <form class="form-horizontal">
+                                        <form class="form-horizontal" method="POST" >
                                             
                                             <fieldset>
                                                 <legend>Cadastro de Matéria</legend>                                   
                                                 <div class="form-group">			  
-                                                    <label class="control-label col-sm-2" for="pwd">Titulo:</label>
-                                                    <div class="col-sm-5"> 
-                                                        <input type="text" class="form-control">
+                                                   
+                                                    <div class="col-sm-10"> 
+                                                        <input type="text" placeholder="Nome da matéria" class="form-control">
                                                     </div>
                                                 </div>
-                                                <div class="form-group">			  
-                                                    <label class="control-label col-sm-2" for="pwd">Apresentação:</label>
-                                                    <div class="col-sm-5"> 
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                </div>
+                                                
+                                                
                                                 <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="pwd">Ementa:</label>
-                                                    <div class="col-sm-4"> 
-                                                        <textarea class="form-control" rows="5" rows="4" cols="50"></textarea>
+                                                    <div class="col-sm-10"> 
+                                                        <textarea class="form-control" placeholder="Apresentação" rows="8"  cols="50"></textarea>
                                                     </div>
                                                 </div>
+                                                
+                                                
+                                                
                                                 <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="pwd">Objetivo:</label>
-                                                    <div class="col-sm-4"> 
-                                                        <textarea class="form-control" rows="5" rows="4" cols="50"></textarea>
+                                                    <div class="col-sm-10"> 
+                                                        <textarea class="form-control" placeholder="Ementa" rows="8"  cols="50"></textarea>
                                                     </div>
                                                 </div>
+                                                
+                                                
+                                                
+                                                
                                                 <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="pwd">Bibliografia:</label>
-                                                    <div class="col-sm-4"> 
-                                                        <textarea class="form-control" rows="5" rows="4" cols="50"></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">			  
-                                                    <label class="control-label col-sm-2" for="pwd">Material:</label>
-                                                    <div class="col-sm-2"> 
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="pwd">Extra Classe:</label>
-                                                    <div class="col-sm-5"> 
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="pwd">Avaliações:</label>
-                                                    <div class="col-sm-5"> 
-                                                        <input type="text" class="form-control" >
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="pwd">Aulas:</label>
-                                                    <div class="col-sm-5"> 
-                                                        <input type="text" class="form-control" >
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="pwd">Tempo de Aula:</label>
-                                                    <div class="col-sm-2"> 
-                                                        <input type="text" class="form-control" >
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="pwd">Total Aulas:</label>
-                                                    <div class="col-sm-1"> 
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                </div>                                                  
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="pwd">Total de Aulas:</label>
-                                                    <div class="col-sm-2"> 
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="pwd">Tempo de Aulas:</label>
-                                                    <div class="col-sm-2"> 
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                </div>                                                  
                                               
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="pwd">Dia da Semana:</label>               
-                                                    <div class="col-sm-3">     
-                                                        <select>
-                                                            <option >Segunda</option>
-                                                            <option >Terça</option>
-                                                            <option >Quarta</option>
-                                                            <option >Quinta</option>
-                                                            <option >Sexta</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="pwd">Horario inicial:</label>
-                                                    <div class="col-sm-2"> 
-                                                        <input type="text" class="form-control">
+                                                    <div class="col-sm-10"> 
+                                                        <textarea class="form-control" placeholder="Objetivo" rows="8"  cols="50"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="pwd">Horario Final:</label>
-                                                    <div class="col-sm-2"> 
-                                                        <input type="text" class="form-control">
+                                                  
+                                                    <div class="col-sm-10"> 
+                                                        <textarea class="form-control" placeholder="Bibiografia" rows="8"  cols="50"></textarea>
                                                     </div>
                                                 </div>
-
-                                               
-                                                <br>
+                                                <div class="form-group">			  
+                                                   
+                                                    <div class="col-sm-10"> 
+                                                        <textarea  placeholder="Material" class="form-control" rows="8" cols="50"></textarea>
+                                                    </div>
+                                                </div>
+                                                
                                                 <div class="form-group">
-                                                    <div class="col-lg-10 col-lg-offset-2">
+                                                    <div class="col-sm-10"> 
+                                                        <textarea class="form-control" placeholder="Extra Classe" rows="8"  cols="50"></textarea>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                <div class="form-group">
+                                                    <div class="col-sm-10"> 
+                                                        <textarea class="form-control" placeholder="Avaliação" rows="8"  cols="50"></textarea>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                <div class="form-group">
+                                                    <div class="col-lg-10 col-lg-offset-0">
                                                         <button class="btn btn-primary" type="submit">Cadrastrar</button>
                                                         <button class="btn btn-default" type="reset">Cancelar</button>                             
                                                     </div>
@@ -201,11 +152,11 @@
         </div>
 
         <!-- Javascripts-->
-        <script src="js/jquery-2.1.4.min.js"></script>
-        <script src="js/essential-plugins.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/plugins/pace.min.js"></script>
-        <script src="js/main.js"></script>
+        <script src="../js/jquery-2.1.4.min.js"></script>
+        <script src="../js/essential-plugins.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/plugins/pace.min.js"></script>
+        <script src="../js/main.js"></script>
 
     </body> 	
 </html>

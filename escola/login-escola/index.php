@@ -5,7 +5,7 @@
         <title>Escola</title>
 
         <link rel="stylesheet" href="css/style.css">
-
+        
 
     </head>
 
@@ -80,15 +80,15 @@
         GLOBAL $aviso;
 
         $id = filter_input(INPUT_GET, id);
-          
-        
+
+
         session_start();
 
         //Verfica se uma sessão já foi iniciada, se foi redireciona para pagina inical
         if (isset($_SESSION['id'])) {
 
             $num = $_SESSION['id'];
-            
+
             if (strcmp($_SESSION['entidade'], "Administrador") == 0) {
                 header("location: ../administrador/index.php?id=$num");
             }//if
@@ -98,19 +98,21 @@
             elseif (strcmp($_SESSION['entidade'], "Professor") == 0) {
                 header("location:../professor/index.php?id=$num");
             }//elseif
-            
         }//if
         //Tratamento de um código de erro
         if ($id == 150) {
 
             $aviso = "Dados incorretos";
-            
         }//if
         ?>
 
+
+
+       
         <div class="login">
             <div class="login-screen">
                 <div class="app-title">
+                    
                     <h1> Logar </h1>
 
                 </div>
@@ -118,13 +120,13 @@
                 <div class="login-form">
 
                     <div class="control-group">
-                        <input type="text" class="login-field" value="" placeholder="CPF" id="user-name">
-                        <label class="login-field-icon fui-user" for="login-name"></label>
+                        <input class="form-control cpf-mask"  id="user-name" name="cpf" placeholder="CPF" type="text">
+                      
                     </div>
 
                     <div class="control-group">
                         <input type="password" class="login-field" value="" placeholder="Senha" id="password">
-                        <label class="login-field-icon fui-lock" for="login-pass"></label>
+                       
                     </div>
                     <p id="aviso"> <?php echo $aviso; ?> </p>      
 
@@ -134,6 +136,12 @@
                 </div>
             </div>
         </div>
+
+        <script async="" src="//www.google-analytics.com/analytics.js"></script><script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="//assets.locaweb.com.br/locastyle/2.0.6/javascripts/locastyle.js"></script>
+        <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+
     </body>
 
 

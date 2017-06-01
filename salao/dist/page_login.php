@@ -5,6 +5,10 @@
     Data: 08/05/2017
     Tela de login do administrador do sistema do salão.
   */
+  setcookie('manter', 'off');
+  setcookie('login', '');
+  setcookie('senha', '');
+  
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +49,7 @@
             <div class="utility">
               <div class="animated-checkbox">
                 <label class="semibold-text">
-                  <input type="checkbox"><span class="label-text">Continuar logado</span>
+                  <input type="checkbox" name="manter" id="manter"><span class="label-text">Continuar logado?</span>
                 </label>
               </div>
               <p class="semibold-text mb-0"><a id="toFlip" href="#">Esqueceu sua senha?</a></p>

@@ -1,9 +1,9 @@
 <?php
 
-// Aquivo responsavel pelo logout do administrador 
-//inicio a sessão na pagina 
+// Aquivo responsavel pelo logout  
+
 session_start();
-//destruo todos os dados da sessão
+
 session_destroy();  
 
 header("location:index.php");

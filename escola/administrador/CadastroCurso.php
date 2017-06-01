@@ -1,6 +1,9 @@
+
+
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Protótipo tela de alteração de dados</title>
+        <title>Cadastro de curso</title>
         <meta charset="utf-8">    
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,31 +14,29 @@
 
     </head>
     <body>
-        
+
         <?php
-   // Verifica se a pagina foi chamada durante uma sessão, se não foi, não é possivel acessa-lá 
-        
-            session_start();
-        
-            $id = filter_input(INPUT_GET, id);
-      
-            if(isset($_SESSION['id']))
-            {
-                
-                if($id != $_SESSION['id']){
-                    header("location:../index.php");
-                }//if
-                
+        // Verifica se a pagina foi chamada durante uma sessão, se não foi, não é possivel acessa-lá 
+
+        session_start();
+
+        $id = filter_input(INPUT_GET, id);
+
+        if (isset($_SESSION['id'])) {
+
+            if ($id != $_SESSION['id']) {
+                header("location:../index.php");
             }//if
-            else {
-                
-                header("location:../login-escola/");
-                
-            }//else
             
+            $aviso = filter_input(INPUT_GET,aviso);
             
+        }//if
+        else {
+
+            header("location:../login-escola/");
+        }//else
         ?>
-        
+
         <div class="wrapper">
             <!-- Navbar-->
             <?php
@@ -51,21 +52,18 @@
                 <div class="page-title">
                     <div>
                         <h1><i class="fa fa-edit"></i>Cadastro de Curso</h1>
-                        <p>Informações do curso</p>
+                        <p>Informações do aluno</p>
                     </div>
                     <div>
                         <ul class="breadcrumb">
                             <li><i class="fa fa-home fa-lg"></i></li>
                             <li>Cadastro</li>
-                            <li>Cadastro de curso</li>
+                            <li>Cadastro De Curso</li>
                         </ul>
                     </div>
                 </div>
 
-                
-                
-
-
+            
 
                 <div class="row">
                     <div class="col-md-12">
@@ -172,15 +170,17 @@
         </div>
 
 
-
-
-
         <!-- Javascripts-->
-        <script src="js/jquery-2.1.4.min.js"></script>
-        <script src="js/essential-plugins.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/plugins/pace.min.js"></script>
-        <script src="js/main.js"></script>
+        <script src="../js/jquery-2.1.4.min.js"></script>
+        <script src="../js/essential-plugins.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/plugins/pace.min.js"></script>
+        <script src="../js/main.js"></script>
 
     </body> 	
 </html>
+
+
+
+
+   

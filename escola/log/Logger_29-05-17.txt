@@ -1,0 +1,15 @@
+[10:56:11][127.0.0.1]: insert into Pessoa values(19,'Emmanuel','martins','1960/1/1','012.345.678-91','32876i483','1234',1,'koreia','bts é dahora','12335-332','bairro da liberdade','seoul','') 
+[10:56:11][127.0.0.1]: Erro gerado no registro de uma Pessoa: Data too long for column 'Estado' at row 1 
+[10:56:39][127.0.0.1]: insert into Pessoa values(19,'Emmanuel','martins','1960/1/1','012.345.678-91','32876i483','1234',1,'koreia','bts é dahora','12335-332','bairro da liberdade','seoul','') 
+[10:56:39][127.0.0.1]: Erro gerado no registro de uma Pessoa: Data too long for column 'Estado' at row 1 
+[10:57:40][127.0.0.1]: insert into Pessoa values(19,'Emmanuel','martins','1960/1/1','012.345.678-91','32876i483','1234',1,'SP','bts é dahora','12335-332','bairro da liberdade','seoul','') 
+[11:05:02][127.0.0.1]: insert into Pessoa values(20,'Emmanuel','Martins','1997/7/28','429.018.308-54','544018102','1234',1,'SP','Emilio de menezes','13469-111','Vila Amorim','Americana','') 
+[11:05:02][127.0.0.1]: Sucesso ao cadastrar pessoa 
+[11:05:02][127.0.0.1]: insert into Administrador values (10,20)  
+[11:06:54][127.0.0.1]: insert into Pessoa values(21,'Leandro','Alves','1960/1/2','123.456.789-01','123456789','1',1,'sp','oi','12345-678','a','sbo','') 
+[11:17:28][127.0.0.1]: insert into Pessoa values(22,'alex','alves','1977/4/19','123.456.789-01','123456789','1',1,'sp','kh','11234-567','kh','a','') 
+[11:17:28][127.0.0.1]: Erro gerado no registro de uma Pessoa: Duplicate entry '123.456.789-01' for key 'CPF' 
+[11:18:00][127.0.0.1]: insert into Pessoa values(22,'alex','alves','1960/1/1','123.456.789-01','123456789','1',1,'sp','kh','11234-567','sabhjsambsaj','a','') 
+[11:18:00][127.0.0.1]: Erro gerado no registro de uma Pessoa: Duplicate entry '123.456.789-01' for key 'CPF' 
+[11:18:05][127.0.0.1]: insert into Pessoa values(22,'alex','alves','1960/1/1','123.456.789-01','123456789','1',1,'sp','kh','11234-567','sabhjsambsaj','a','') 
+[11:18:05][127.0.0.1]: Erro gerado no registro de uma Pessoa: Duplicate entry '123.456.789-01' for key 'CPF' 

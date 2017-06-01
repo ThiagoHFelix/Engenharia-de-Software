@@ -40,7 +40,7 @@
         <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
+                <div class="navbar-header" >
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                     </button>
@@ -48,19 +48,19 @@
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-right">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+                    <ul class="nav navbar-nav navbar-right" >
                         <li>
-                            <a class="page-scroll" href="login-escola/index.php">Logar</a>
+                            <a class="page-scroll" style="color: black; " href="login-escola/index.php">Logar</a>
                         </li>                    
                         <li>
-                            <a class="page-scroll" href="">Cursos</a>
+                            <a class="page-scroll" style="color: black; " href="#cursos">Cursos</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#fotos">Galeria</a>
+                            <a class="page-scroll" style="color: black; " href="#fotos">Galeria</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#contact">Fale conosco</a>
+                            <a class="page-scroll" style="color: black; " href="#contact">Fale conosco</a>
                         </li>
                     </ul>
                 </div>
@@ -70,12 +70,12 @@
         </nav>
 
         <header>
-            <div class="header-content">
-                <div class="header-content-inner">
-                    <h1 style="font-weight: bold;color: crimson;" id="homeHeading">Sistema Escolar Shalon</h1>
+            <div class="header-content" >
+                <div class="header-content-inner" >
+                    <h1 style="font-weight: bold;color: crimson;" id="homeHeading">Escola Shalon</h1>
                     <hr>
-                    <p style="font-weight: bold;color: white" >Seja um aluno Shalon, venha aprender, se especializar e evoluir!</p>
-                    <a href="login-escola/index.php" class="btn btn-primary btn-xl page-scroll"> Entrar no sistema</a>
+                    <p style="font-weight: bold;color: crimson" >Seja um aluno Shalon, venha aprender, se especializar e evoluir!</p>
+                    <a href="#cursos" class="btn btn-primary btn-xl page-scroll"> Conheça nossos cursos</a>
                 </div>
             </div>
         </header>
@@ -225,6 +225,7 @@
                     <div class="col-lg-4 text-center">
                         <i class="fa fa-envelope-o fa-3x sr-contact"></i>
                         <p><a href="mailto:roselishalon@hotmail.com">roselishalon@hotmail.com</a></p>
+                        
                     </div>
                 </div>
             </div>

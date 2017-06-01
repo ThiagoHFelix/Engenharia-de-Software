@@ -65,7 +65,7 @@ if(isset($_SESSION['return'])){
                   <form method="post" action="../Controller/agendar.php" id="agendar">                    
                     <div class='form-group'>            
                       <label class="control-label">Selecione a data</label>          
-                      <input class='form-control' type='date' name='data' id='data'>
+                      <input class='form-control' type='date' name='data' id='data' >
                     </div>                  
                     <div class="form-group">
                       <label class="control-label">Digite o CPF do cliente</label>
@@ -74,10 +74,10 @@ if(isset($_SESSION['return'])){
                     <div class="form-group">
                       <label class="control-label">Qual procedimento você deseja realizar?</label>      
                       <select class="form-control" id="proc" name="proc">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
+                        <option>Corte</option>
+                        <option>Lavagem</option>
+                        <option>Pintura</option>
+                        <option>Chapinha</option>
                       </select>
                     </div> 
                     <div class="form-group">

@@ -1,0 +1,17 @@
+[11:44:21][127.0.0.1]: Conexão realizada com sucesso. 
+[11:44:21][127.0.0.1]: Conexão realizada com sucesso. 
+[13:38:31][127.0.0.1]: Conexão realizada com sucesso. 
+[13:38:32][127.0.0.1]: Conexão realizada com sucesso. 
+[14:50:26][127.0.0.1]: Conexão realizada com sucesso. 
+[14:50:26][127.0.0.1]: Conexão realizada com sucesso. 
+[18:05:31][127.0.0.1]: Conexão realizada com sucesso. 
+[18:05:31][127.0.0.1]: Conexão realizada com sucesso. 
+[18:07:22][127.0.0.1]: Conexão realizada com sucesso. 
+[18:10:01][127.0.0.1]: Conexão realizada com sucesso. 
+[18:10:53][127.0.0.1]: Conexão realizada com sucesso. 
+[18:10:55][127.0.0.1]: Conexão realizada com sucesso. 
+[18:10:57][127.0.0.1]: Conexão realizada com sucesso. 
+[18:10:58][127.0.0.1]: Conexão realizada com sucesso. 
+[18:11:00][127.0.0.1]: Conexão realizada com sucesso. 
+[18:13:02][127.0.0.1]: Conexão realizada com sucesso. 
+[18:13:14][127.0.0.1]: Conexão realizada com sucesso. 
