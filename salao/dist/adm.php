@@ -3,15 +3,30 @@
   Autor: Paulo Gabriel Ronchini
   Data: 08/05/2017
 
-  P√°gina inicial do perfil do administrador.
+  P·gina inicial do perfil do administrador.
 */
   session_start();
   #header('Content-Type: text/html; charset=ISO-8859-1');
-#Verifica se o usu√°rio esta logado, caso n√£o esteja, ele √© redirecionado para a tela de login.
+#Verifica se o usu·rio esta logado, caso n„o esteja, ele È redirecionado para a tela de login.
   if(empty($_SESSION['chave']) || $_SESSION['chave']<>'ok'){
     header("Location:page_login.php");
   }
+
+  if(isset($_SESSION['cad_cliente']) && $_SESSION['cad_cliente'] == true){
+      echo "<script type='text/javascript'>alert('Cliente cadastrado!');</script>";
+      unset($_SESSION['cad_cliente']);
+  }
+
+  if(isset($_SESSION['updateadm']) && $_SESSION['updateadm'] == 1){
+      echo "<script type='text/javascript'>alert('Dados atualizados!');</script>";
+      unset($_SESSION['updateadm']);
+  }elseif(isset($_SESSION['updateadm']) && $_SESSION['updateadm'] == 0){
+      echo "<script type='text/javascript'>alert('Dados atualizados!');</script>";
+      unset($_SESSION['updateadm']);
+  }
+
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -38,14 +53,49 @@
             echo "<h1><i class='fa fa-dashboard'></i>  Bem Vindo ".$_SESSION['user']."</h1>"
           ?>
             <p>Perfil Administrador</p>
-          </div>
-          <div>
-            <ul class="breadcrumb">
-              <li><i class="fa fa-home fa-lg"></i></li>
-              <li><a href="#">Painel</a></li>
-            </ul>
-          </div>
+          </div>          
         </div>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card">
+              <h3 class="card-title">Agenda de hoje <?php echo date('d/m/y');?></h3>
+              <div class="card-body">                  
+                  <div class="table-responsive">
+                  <table class="table">
+                    <?php
+                  $connect = mysqli_connect('localhost','root','', 'projeto shalon');
+                  $result = mysqli_query($connect, "select p.nome, cs.Servico, cs.hora, cs.status, cs.ID from cliente c, consulta cs, pessoa p where cs.data = '".date("Y-m-d")."' and cs.Id_cliente = c.Id and c.CPF = p.CPF order by cs.Hora");
+                      if(mysqli_num_rows($result) == 0){
+                        echo "<p>Nenhum hor·rio agendado para hoje".date("d/m/y")."</p>";                        
+                      }else{
+                        echo "<table class= 'table'>";
+                        echo "<thead>";
+                        echo " <tr>";
+                        echo    "<th>Cliente</th>";
+                        echo    "<th>Procedimento</th>";
+                        echo    "<th>Hora</th>";                                                
+                        echo    "<th>Status</th>";  
+                        echo    "<th>AÁıes</th>";                                                
+                        echo  "</tr>";
+                        echo "</thead>";
+                        while($row = mysqli_fetch_assoc($result)){
+                          if($row['status']=='a'){
+                            echo "<tr><td>".$row['nome']."</td><td>".$row['Servico']."</td><td>".$row['hora']."</td><td>Marcado</td><td class='actions'>
+                                  <a data-toggle='tooltip' title='Realizar consulta' class='btn btn-warning btn-xs' href='listar_agenda.php?st=r&id=".$row['ID']."&data=".date("Y-m-d")."'><i class='fa fa-check-square-o' aria-hidden='true'></i></a>
+                                  <a data-toggle='tooltip' title='Cancelar consulta' class='btn btn-danger btn-xs' href='listar_agenda.php?st=c&id=".$row['ID']."&data=".date("Y-m-d")."'><i class='fa fa-times' aria-hidden='true'></i></a></td></tr>";        
+                          }elseif($row['status']=='r'){
+                            echo "<tr><td>".$row['nome']."</td><td>".$row['Servico']."</td><td>".$row['hora']."</td><td>Realizado</td><td></td></tr>";
+                          }elseif($row['status']=='c'){
+                            echo "<tr><td>".$row['nome']."</td><td>".$row['Servico']."</td><td>".$row['hora']."</td><td>Cancelado</td><td></td></tr>";
+                        }
+                      }
+                    }
+                    ?>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
         
     <!-- Javascripts-->
     <script src="js/jquery-2.1.4.min.js"></script>
@@ -113,3 +163,4 @@
     </script>
   </body>
 </html>
+                  

@@ -6,8 +6,12 @@
 		Código para deletar um registro da tabela procedimento.
 	*/
 	session_start();
-	$connect = mysqli_connect('localhost','root','', 'projeto shalon');
+	include_once("conecta.php");
+	$connect = conecta();
+
+	//$connect = mysqli_connect('localhost','root','', 'projeto shalon');
 	$result = mysqli_query($connect, "delete from procedimento where ID = ".$_GET['apagar']."");
-	header("Location:../dist/listar_procedimentos.php"); 
+	//echo "alert('O procedimento foi deletado!')";
+	header("Location:../dist/adm.php"); 
 	mysqli_close($connect);
 ?>

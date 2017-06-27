@@ -5,7 +5,7 @@
     Data: 08/05/2017
     Tela de visualiza√ß√£o de dados de procedimentos.
   */
-  #Verifica se o usu√°rio esta logado, caso n√£o esteja, ele √© redirecionado para a tela de login.
+  #Verifica se o usu√°rio esta logado, caso N„o esteja, ele √© redirecionado para a tela de login.
   if(empty($_SESSION['chave']) || $_SESSION['chave']<>'ok'){
     header("Location:page_login.php");
   }
@@ -67,7 +67,7 @@
                       echo "<tr><td>CEP</td><td>".$row['CEP']."</td></tr>";
                       echo "<tr><td>Rua</td><td>".$row['Rua']."</td></tr>";
                       echo "<tr><td>Bairro</td><td>".$row['Bairro']."</td></tr>";
-                      echo "<tr><td>Cidade</td><td>".$row['Cidade']."</td></tr>";
+                      echo "<tr><td>Cidade</td><td>".stripslashes($row['Cidade'])."</td></tr>";
                       echo "<tr><td>Estado</td><td>".$row['Estado']."</td></tr>";
                       echo "<tr><td>Patologias</td><td>".$row['Patologias']."</td></tr>";
                       echo "<tr><td>Tratamentos</td><td>".$row['Tratamento']."</td></tr>";
@@ -83,14 +83,14 @@
                           echo "<tr><td>Gestante<td>Sim</td></tr>";
                         }else
                         {
-                          echo "<tr><td>Gestante<td>N√£o</td></tr>";
+                          echo "<tr><td>Gestante<td>N„o</td></tr>";
                         }
                         if($row['lactante'] == 1)
                         {
                           echo "<tr><td>Lactante<td>Sim</td></tr>";
                         }else
                         {
-                          echo "<tr><td>Lactante<td>N√£o</td></tr>";
+                          echo "<tr><td>Lactante<td>N„o</td></tr>";
                         }
                       }         
                       if($row['Cardiaco'] == 1)
@@ -98,28 +98,30 @@
                         echo "<tr><td>Cardiaco<td>Sim</td></tr>";
                       }else
                       {
-                        echo "<tr><td>Cardiaco<td>N√£o</td></tr>";
+                        echo "<tr><td>Cardiaco<td>N„o</td></tr>";
                       }
                       if($row['Hipertenso'] == 1)
                       {
                         echo "<tr><td>Hipertenso<td>Sim</td></tr>";
                       }else
                       {
-                        echo "<tr><td>Hipertenso<td>N√£o</td></tr>";
-                      }
-                      echo "<tr><td>Observa√ß√£o</td><td><textarea style='max-width: 100%;' form='observacao' rows='6' cols='25' name='observacao_field'>".$row['obs']."</textarea></td></tr>"; 
-                      echo "</table>";                                        
-
+                        echo "<tr><td>Hipertenso<td>N„o</td></tr>";
+                      }                      
+                      echo "</table>";                                
+                      
+                      echo"<div class='form-group'>
+                            <label for='comment'>Coment·rio:</label>
+                            <textarea class='form-control' style='max-width: 100%;' form='observacao' rows='6' cols='10' name='observacao_field'>".$row['obs']."</textarea>
+                          </div>"
                     ?>
                    <form id="observacao" method="post">
                       <?php
                         echo "<input type='hidden' name='cpf' id='cpf' value='".$row['CPF']."'>"
                       ?>
-                    </form>
+                   </form>
                     <div class="card-footer">
-                      <button type="submit" form="observacao" class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>Salvar observa√ß√£o</button>&nbsp;&nbsp;&nbsp;<a  id="bt_can" class="btn btn-default icon-btn"><i class="fa fa-fw fa-lg fa-times-circle"></i>Voltar</a>
-                    </div>            
-                  
+                      <button type="submit" form="observacao" class="btn btn-primary icon-btn" type="button" onclick="msg()"><i class="fa fa-fw fa-lg fa-check-circle"></i>Salvar ObservaÁ„o</button>&nbsp;&nbsp;&nbsp;<a  id="bt_can" class="btn btn-default icon-btn" onclick="cancelar()"><i class="fa fa-fw fa-lg fa-times-circle"></i>Voltar</a>
+                    </div>
                 </div>
               </div>             
             </div>
@@ -133,6 +135,19 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/pace.min.js"></script>
     <script src="js/main.js"></script>
+    <script type="text/javascript">
+      function msg(){
+        alert('Coment·rio salvo com sucesso!');
+      }
+
+      function cancelar(){
+        var r = confirm("VocÍ tem certeza que deseja sair sem salvar o coment·rio?");
+        if(r == true){
+          window.location.href ="listar_cliente.php";
+        }
+      }
+    </script>
+
 
   </body>
 </html>

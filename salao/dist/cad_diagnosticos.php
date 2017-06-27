@@ -3,112 +3,102 @@
   Autor: Paulo Gabriel Ronchini
   Data: 08/05/2017
 
-  Tela para cadastro de diagnÃ³sticos.
+  Tela para cadastro de diagnósticos.
 */
 
   session_start();
 if(empty($_SESSION['chave']) || $_SESSION['chave']<>'ok'){
     header("Location:page_login.php");
-  }
+}
 /*
-    Verifica a variavel de sessÃ£o $_SESSION["resposta"] que indica se o cpf informado foi encontrado e se o diagnÃ³stico foi cadastrado, e informa ao usuÃ¡rio o resultado da aperaÃ§Ã£o. 
-*/
-
-
-?>
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- CSS-->
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <title>Shalon Admin</title>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
-    <!--if lt IE 9
-    script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
-    script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
-    -->
-   
-  </head>
- <?php
+    Verifica a variavel de sessão $_SESSION["resposta_diag"] que indica se o cpf informado foi encontrado e se o procedimento foi cadastrado, e informa ao usuário o resultado da aperação. 
+  */
+  if(isset($_SESSION["resposta_diag"])){
+    if($_SESSION["resposta_diag"] == 'false'){
+         echo "<script type='text/javascript'>
+             alert('CPF não encontrado ou inválido');
+         </script>";   
+         $_SESSION["resposta_diag"] = null;   
+    }elseif($_SESSION["resposta_diag"] == 'true'){
+         echo "<script type='text/javascript'>
+             alert('Diagnóstico cadastrado com sucesso!');
+         </script>";
+         $_SESSION["resposta_diag"] = null;
+    }
+    unset($_SESSION["resposta"]);
+  }
 	include_once("cabecalho.php");
-  ?>
+?>
       <div class="content-wrapper">
+        <div class="page-title" id="titulo">                    
+          <h1><i class="fa fa-edit"></i> Cadastrar Diagnóstico</h1>          
+        </div>
         <div class="page-title">
-          <div>
-            <h1><i class="fa fa-edit"></i> Cadastrar diagnÃ³sticos</h1>
-            
-          </div>
-          <div>
-            <ul class="breadcrumb">
-              <li><i class="fa fa-home fa-lg"></i></li>
-              <li>Home</li>
-              <li><a href="#">Novo diagnÃ³stico</a></li>
-            </ul>
-          </div>
+          <ul class="breadcrumb">              
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Cadastrar Diagnóstico</a></li>
+          </ul>
         </div>
         <div class="row">
           <div class="col-md-8">
-            <div class="card">
-              <h3 class="card-title">Cadastrar informaÃ§Ãµes</h3>
+            <div class="card">              
               <div class="card-body">
-                <form method="post" id="verifica_cpf" style="display:block;">
+                <form method="post" id="verifica_cpf" style="display:block;" class="form-inline">
+                  <div class="form-group">                         
+                    <input class="form-control" type="text" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" placeholder="CPF do cliente" name="ver_cpf" id="ver_cpf">
+                  </div>                  
                   <div class="form-group">
-                    <label class="control-label">CPF</label>      
-                    <input class="form-control" type="text" placeholder="CPF do cliente" name="ver_cpf" id="ver_cpf">
-                  </div>
-                  <div class="form-group">
-                    <input type="submit"  value="Procurar CPF">
-                  </div>
-                </form>
-              <!--FormulÃ¡rio de cadastro de diagnÃ³stico-->
+                    <div class="col-sm-2">
+                    <input class="form-control" type="submit" value="Buscar CPF" name="ok">
+                    </div>
+                  </div>  
+                </form>       
+              <!--Formulário de cadastro de diagnóstico-->
                 <form action="../Controller/Diagnostico.php" method="post" id="cad_diag" style="display:none;">
                   
-                  <input class="form-control" type="text" placeholder="CPF do cliente" name="cpf" id="cpf">
+                  <input class="form-control" type="hidden"  name="cpf" id="cpf">
                   
 				          <div class="form-group">
                     <label class="control-label">Textura</label>	  	
-                    <input class="form-control" type="text" placeholder="Textura" name="tex" required>
+                    <input class="form-control" type="text" maxlength="150" placeholder="Textura" name="tex" id="tex" required>
                   </div>
                   <div class="form-group">
-                    <label class="control-label">Forma</label>
-                    <input class="form-control" type="text" placeholder="Forma" name="for" required>
+                    <label class="control-label">Forma de cabelo</label>
+                    <input class="form-control" type="text" maxlength="150" placeholder="Forma" name="for" id="for" required>
                   </div>
                   <div class="form-group">
                     <label class="control-label">Fibra</label>
-                     <input class="form-control" type="text" placeholder="Fibra" name="fi" required>
+                     <input class="form-control" type="text" maxlength="150" placeholder="Fibra" name="fi" id="fi" required>
                   </div>
 				          <div class="form-group">
                     <div class="checkbox">
-                      <label><input type="checkbox" name="que">O paciente tem queda de cabelo?</label>
+                      <label><input type="checkbox" name="que" id="que">O paciente tem queda de cabelo?</label>
                     </div>                    
                   </div>
 				          <div class="form-group">
-                    <label class="control-label">Emocinal</label>
-                    <input class="form-control" type="text" placeholder="Estado emocional do cliente" name="emo" required>
+                    <label class="control-label">Emocional</label>
+                    <input class="form-control" type="text" maxlength="150" placeholder="Estado emocional do cliente" name="emo" id="emo" required>
                   </div>
                   <div class="form-group">
-                    <label class="control-label">CutÃ­cula</label>
-                    <input class="form-control" type="text" placeholder="CutÃ­cula" name="cu" required>
+                    <label class="control-label">Cutícula</label>
+                    <input class="form-control" type="text" maxlength="150" placeholder="Cutícula" name="cu" id="cu" required>
                   </div>
                   <div class="form-group">
-                    <label class="control-label">CaracterÃ­stica FÃ­sicas</label>
-                    <input class="form-control" type="text" placeholder="CaracterÃ­stica FÃ­sicas" name="caf" required>
+                    <label class="control-label">Característica Capilares</label>
+                    <input class="form-control" type="text" maxlength="150" placeholder="Característica Físicas" name="caf" id="caf" required>
                   </div>
 				          <div class="form-group">
                     <label class="control-label">Cor</label>
-                    <input class="form-control" type="text" placeholder="PontuaÃ§Ã£o" name="cor" required>
+                    <input class="form-control" type="text" maxlength="150" placeholder="Pontuação" name="cor" id="cor" required>
                   </div>
 				          <div class="form-group">
-                    <label class="control-label">FuncionÃ¡rio</label>
-                    <input class="form-control" type="text" placeholder="Nome do funcionÃ¡rio que fez o diagnÃ³stico" name="fun" required>
+                    <label class="control-label">Funcionário</label>
+                    <input class="form-control" type="text" maxlength="150" placeholder="Nome do funcionário que fez o diagnóstico" name="fun" id="fun" required>
                   </div>                                                   
                  </form>
               </div>
               <div class="card-footer">
-                <button style="display:none;" type="submit" form="cad_diag" id="bt_cad" class="btn btn-primary icon-btn" onclick="cadastrar();" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>Cadastrar</button>&nbsp;&nbsp;&nbsp;<a style="display:none;" id="bt_can" class="btn btn-default icon-btn" onclick="voltar();"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
+                <button style="display:none;" form="cad_diag" id="bt_cad" class="btn btn-primary icon-btn" onclick="verifica_campos();" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>Cadastrar</button>&nbsp;&nbsp;&nbsp;<a style="display:none;" id="bt_can" class="btn btn-default icon-btn" onclick="voltar();"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
               </div>
             </div>
           </div>         
@@ -121,11 +111,11 @@ if(empty($_SESSION['chave']) || $_SESSION['chave']<>'ok'){
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/pace.min.js"></script>
     <script src="js/main.js"></script> 
-    <script type="text/javascript">
-       
+    <script type="text/javascript" src="js/control_form.js"></script>
+    <script type="text/javascript">       
 
       function voltar(){
-        if(confirm("VocÃª tem certeza que quer sair? Suas alteraÃ§Ãµes seram perdidas!")){
+        if(confirm("Você tem certeza que quer sair? Suas alterações seram perdidas!")){
             window.location.href = "adm.php";
         }
       }
@@ -138,6 +128,74 @@ if(empty($_SESSION['chave']) || $_SESSION['chave']<>'ok'){
           document.getElementById("bt_cad").style.display = "inline";
           document.getElementById("bt_can").style.display = "inline";
       }
+
+      function verifica_campos(){
+
+      var booleano = true;
+
+      if(cad_diag.tex.value.trim().length == 0){
+        cad_diag.tex.style.borderColor = "red";        
+        booleano = false;
+      }else{
+        cad_diag.tex.style.borderColor = "#cccccc";        
+      }
+
+      if(cad_diag.for.value.trim().length == 0){
+        cad_diag.for.style.borderColor = "red";        
+        booleano = false;
+      }else{
+        cad_diag.for.style.borderColor = "#cccccc";        
+      }
+
+      if(cad_diag.fi.value.trim().length == 0){
+        cad_diag.fi.style.borderColor = "red";        
+        booleano = false;
+      }else{
+        cad_diag.fi.style.borderColor = "#cccccc";        
+      }
+
+      if(cad_diag.emo.value.trim().length == 0){
+        cad_diag.emo.style.borderColor = "red";        
+        booleano = false;
+      }else{
+        cad_diag.emo.style.borderColor = "#cccccc";        
+      }
+
+      if(cad_diag.cu.value.trim().length == 0){
+        cad_diag.cu.style.borderColor = "red";        
+        booleano = false;
+      }else{
+        cad_diag.cu.style.borderColor = "#cccccc";        
+      }
+
+      if(cad_diag.caf.value.trim().length == 0){
+        cad_diag.caf.style.borderColor = "red";        
+        booleano = false;
+      }else{
+        cad_diag.caf.style.borderColor = "#cccccc";        
+      }
+
+      if(cad_diag.cor.value.trim().length == 0){
+        cad_diag.cor.style.borderColor = "red";        
+        booleano = false;
+      }else{
+        cad_diag.cor.style.borderColor = "#cccccc";        
+      }
+
+      if(cad_diag.fun.value.trim().length == 0){
+        cad_diag.fun.style.borderColor = "red";        
+        booleano = false;
+      }else{
+        cad_diag.fun.style.borderColor = "#cccccc";        
+      }
+
+      if(booleano == true){
+        cad_diag.submit();
+      }else{
+        alert("Verifique os campos em branco");
+      }
+    }
+
     </script> 
     <?php
       include_once("../Controller/verifica_cpf.php");
@@ -145,11 +203,11 @@ if(empty($_SESSION['chave']) || $_SESSION['chave']<>'ok'){
       if(isset($_POST["ver_cpf"])){  
         if(verifica_cpf($_POST["ver_cpf"]) == 'false'){
              #echo "<script type='text/javascript'>alert('".verifica_cpf($_POST["ver_cpf"])."');</script>";   
-             echo "<script type='text/javascript'>alert('CPF  nÃ£o encontrado ou invÃ¡lido');</script>";   
-             #$_SESSION["resposta"] = '';   
+             echo "<script type='text/javascript'>alert('CPF  não encontrado ou inválido');</script>";   
+             #$_SESSION["resposta_diag"] = '';   
         }elseif(verifica_cpf($_POST["ver_cpf"]) == 'true'){
              echo "<script type='text/javascript'>exibir_form('".$_POST["ver_cpf"]."');</script>";
-             #$_SESSION["resposta"] = '';
+             #$_SESSION["resposta_diag"] = '';
         }
       }
     ?>

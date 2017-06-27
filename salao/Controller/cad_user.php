@@ -5,46 +5,49 @@
 		Data: 08/05/2017
 
 		Código para cadastro de dados na tabela pessoa.
-	*/	
+	*/	 
 
 	session_start();
 
-	
-		$connect = mysqli_connect('localhost','root','', 'projeto shalon');
-	
+	include_once("conecta.php");
 
-	#Dados dos formulário de cadastro de dados pessoais.
-	 $nome = $_POST['nome'];
-	 $email = $_POST['email'];
-	 $cpf = $_POST['cpf'];
-	 $data = $_POST['data'];	 	 
-	 $cep = $_POST['cep'];
-	 $bairro = $_POST['bairro'];
-	 $rua = $_POST['rua'];
-	 $numero = $_POST['numero'];
-	 $cidade = $_POST['cidade'];
-	 $estado = $_POST['estado'];
-	 $sexo = $_POST['sexo'];
-	 $rg = $_POST['rg'];
-	 $tel = $_POST['tel'];
-	 $cel = $_POST['cel'];
+	$connect = conecta();
+
+	#Dados  dos formulário de cadastro de dados pessoais.
+	 $_SESSION['nome'] = $_POST['nome'];
+	 $_SESSION['email'] = $_POST['email'];
+	 $_SESSION['cpf'] = $_POST['cpf'];
+	 $_SESSION['data']= $_POST['data'];	 	 
+	 $_SESSION['cep'] = $_POST['cep'];
+	 $_SESSION['bairro'] = $_POST['bairro'];
+	 $_SESSION['rua'] = $_POST['rua'];
+	 $_SESSION['numero'] = $_POST['numero'];
+	 $_SESSION['cidade'] = addslashes($_POST['cidade']);
+	 $_SESSION['estado'] = $_POST['estado'];
+	 $_SESSION['sexo'] = $_POST['sexo'];
+	 $_SESSION['rg'] = $_POST['rg'];
+	 $_SESSION['tel'] = $_POST['tel'];
+	 $_SESSION['cel'] = $_POST['cel'];	
+		 
 
 	#Código para verificar o valor do radiobutton relacionado ao sexo da pessoa.
-	 if($sexo == 'masculino'){
-	 	$sexo = 1;
+	 if($_SESSION['sexo'] == 'masculino'){
+	 	$_SESSION['sexo'] = 1;
 	 }else{
-	 	$sexo = 0;
+	 	$_SESSION['sexo'] = 0;
 	 }
-	#Código para inserção dos dados na tabela pessoa.
-	 $result = mysqli_query($connect, "insert into pessoa values('".$cpf."', '".$nome."', '".$data."', '".$rg."', '".$email."', '".$rua."', '".$cep."', '".$bairro."', '".$cidade."', '".$estado."', ".$sexo.", null)")or die(mysqli_error($connect));
-	 if(isset($tel)){	 	
-	 	$result = mysqli_query($connect, "insert into telefone values('".$cpf."', '".$tel."')")or die(mysql_error($connect));
-	 }
-	 if (isset($cel)) {
-	 	$result = mysqli_query($connect, "insert into telefone values('".$cpf."', '".$cel."')")or die(mysql_error($connect));
-	 }
-	 header("Location:../dist/cad_cliente.php?cpf=".$cpf."&sexo=".$sexo);
 
-	 mysqli_close($connect);
+	$result = mysqli_query($connect, "select cpf from pessoa where cpf = '".$_SESSION['cpf']."'");
+	$result2 = mysqli_query($connect, "select email from pessoa where email = '".$_SESSION['email']."'");	
+
+	if(mysqli_num_rows($result2) >= 1){
+		header("Location:../dist/pagina_erro.php"); 
+	}elseif(mysqli_num_rows($result) >= 1){	 
+	 	header("Location:../dist/pagina_erro.php"); 
+	}else{
+		header("Location:../dist/cad_cliente.php?cpf=".$_SESSION['cpf']."&sexo=".$_SESSION['sexo']);
+	}
+
 
 ?>
+

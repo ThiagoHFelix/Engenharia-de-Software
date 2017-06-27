@@ -1,13 +1,28 @@
 <?php
-  //session_start();
+
+  session_start();
+
   /*
     Autor: Paulo Gabriel Ronchini
     Data: 08/05/2017
     Tela de login do administrador do sistema do salão.
   */
+
+  if(isset($_SESSION['logou']) && $_SESSION['logou'] == 1){
+    //echo "<script>alert(".$_SESSION['logou'].") </script>"; 
+    echo "<script>alert('Usuário ou senha inválido!') </script>"; 
+    unset($_SESSION['logou']); 
+  } 
+  unset($_SESSION['logou']); 
   setcookie('manter', 'off');
   setcookie('login', '');
   setcookie('senha', '');
+
+  include_once("../Controller/recupera_senha.php");
+
+  if(isset($_POST['rec_email'])){
+      recupera_senha($_POST['rec_email']);
+  }
   
 ?>
 
@@ -38,8 +53,8 @@
         <form class="login-form" action="../Controller/login.php" method="POST">
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>ENTRAR</h3>
           <div class="form-group">
-            <label class="control-label">CPF</label>
-            <input class="form-control" type="text" placeholder="CPF" autofocus name="login" id="login">
+            <label class="control-label">E-mail</label>
+            <input class="form-control" type="email" placeholder="E-mail" autofocus name="login" id="login">
           </div>
           <div class="form-group">
             <label class="control-label">SENHA</label>
@@ -59,11 +74,11 @@
             <button class="btn btn-primary btn-block">Entrar<i class="fa fa-sign-in fa-lg"></i></button>
           </div>
         </form>
-        <form class="forget-form" action="adm.html">
+        <form class="forget-form" method="POST">
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-lock"></i>Esqueceu a senha?</h3>
           <div class="form-group">
-            <label class="control-label">CPF</label>
-            <input class="form-control" type="text" placeholder="CPF">
+            <label class="control-label">E-mail</label>
+            <input class="form-control" type="email" placeholder="E-mail" name="rec_email" id="rec_email" required>
           </div>
           <div class="form-group btn-container">
             <button class="btn btn-primary btn-block">Recuperar<i class="fa fa-unlock fa-lg"></i></button>
@@ -72,6 +87,7 @@
             <p class="semibold-text mb-0"><a id="noFlip" href="#"><i class="fa fa-angle-left fa-fw"></i>Voltar ao Login</a></p>
           </div>
         </form>
+
       </div>
     </section>
   </body>

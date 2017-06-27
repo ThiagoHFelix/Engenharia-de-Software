@@ -54,13 +54,13 @@
         <div class="row">
           <div class="col-md-8">
             <div class="card">
-              <h3 class="card-title" style="margin-bottom:0px;">Agendar</h3>              
+              <h3 class="card-title" style="margin-bottom:0px;">Lista de Clientes</h3>              
               <div class="card-body">   
                          
                   <?php                 
-
+ 
                   $connect = mysqli_connect('localhost','root','', 'projeto shalon');
-                  $result = mysqli_query($connect, "select p.nome, c.cpf  from cliente c, pessoa p where c.cpf = p.cpf ");
+                  $result = mysqli_query($connect, "select p.nome, c.cpf  from cliente c, pessoa p where c.cpf = p.cpf order by p.nome ");
                       if(mysqli_num_rows($result) == 0){
                         echo "<div class='container'><div class='row'><span class='label label-danger'>Nenhum cliente cadastrado</span></div>";                        
                       }else{

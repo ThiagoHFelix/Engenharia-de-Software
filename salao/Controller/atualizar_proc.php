@@ -25,10 +25,15 @@
 				    				  	  Tipo = '".$tipo."',
 				    				  	  Resultado = '".$res."'
 					    				  WHERE ID = ".$id)or die("Houve um erro na atualização");
-    
-	#Fecha a conexão com o banco.
+   		 
+
+	#Fecha a conexão com o banco.	
 	mysqli_close($connect);
 	
-	header("Location:../dist/view_proc.php?apagar=".$id."");
+	if(mysqli_num_rows($result) == 0 || mysqli_num_rows($result)>1){
+		header("Location:../dist/view_proc.php?apagar=".$id);
+	}else{		
+		header("Location:../dist/view_proc.php?apagar=".$id);	
+	}
 
 ?>

@@ -1,3 +1,4 @@
+
 <?php
   session_start();
  if(empty($_SESSION['chave']) || $_SESSION['chave']<>'ok'){
@@ -7,12 +8,12 @@
     Autor: Paulo Gabriel Ronchini
     Data: 08/05/2017
 
-    PÃ¡gina com o formulÃ¡rio de agendamento.
+    Página com o formulário de agendamento.
 
   */
 if(isset($_SESSION['return'])){
   if($_SESSION['return'] == 'false'){
-    echo "<script type='text/javascript'>alert('CPF nÃ£o foi encontrado');</script>";
+    echo "<script type='text/javascript'>alert('CPF não foi encontrado');</script>";
   }elseif($_SESSION['return'] == 'true'){
     echo "<script type='text/javascript'>alert('Cadastrado com sucesso!');</script>";
   }
@@ -33,10 +34,59 @@ if(isset($_SESSION['return'])){
     <!--if lt IE 9
     script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
     script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
-    --><script type="text/javascript">
+    -->
+    <script type="text/javascript" src="js/control_form.js"></script>
+    <script type="text/javascript">
       function cadastrar(){
-        document.getElementById('agendar').submit();
+        if(validarData() == true && validar_campos() == true){
+          document.getElementById('agendar').submit();
+        }
       }
+
+      function validarData() {
+        var data = document.getElementById('data').value;        
+        if(moment().format("YYYY-MM-DD") == data || moment(data).isAfter(moment().format("YYYY-MM-DD"))){  
+          return true;
+        }else{
+          alert("Data inválida!");
+          return false;
+        }
+      }
+
+      function validar_campos(){
+        var cpf = document.getElementById('cpf');
+        var proc = document.getElementById('proc');
+        var hora = document.getElementById('hora');
+        var flag = true;
+        if(cpf.value == "" || cpf.value == null){
+          flag = false;
+          cpf.style.borderColor = "red";
+        }
+
+        if(proc.value == "" || proc.value == null){
+          flag = false;
+          proc.style.borderColor = "red";
+        }
+
+        if(hora.value == "" || hora.value == null){
+          flag = false;
+          hora.style.borderColor = "red";
+        }
+
+        if(flag == false){
+          alert("Preencha os campos em branco!");
+          return false;
+        }else{
+          return true
+        }
+      }
+
+    function cancelar(){
+      var r = confirm("Você tem certeza que quer sair da página?");
+      if(!r == false){
+        window.location.href = "adm.php";
+      }
+    } 
 
     </script> 
   </head>
@@ -46,7 +96,7 @@ if(isset($_SESSION['return'])){
       <div class="content-wrapper">
         <div class="page-title">
           <div>
-            <h1><i class="fa fa-edit"></i> Atualizar DiagnÃ³stico</h1>
+            <h1><i class="fa fa-calendar"></i> Agendar horário</h1>
             
           </div>
           <div>
@@ -59,29 +109,33 @@ if(isset($_SESSION['return'])){
         </div>
         <div class="row">
           <div class="col-md-8">
-            <div class="card">
-              <h3 class="card-title" style="margin-bottom:0px;">Agendar</h3>              
+            <div class="card">                            
               <div class="card-body">                 
                   <form method="post" action="../Controller/agendar.php" id="agendar">                    
                     <div class='form-group'>            
-                      <label class="control-label">Selecione a data</label>          
-                      <input class='form-control' type='date' name='data' id='data' >
+                      <label class="control-label">Selecione a data</label>  
+                      <?php   
+                       if(isset($_GET['st']) and isset($_GET['id'])){
+                          gerenciar_agenda($_GET['st'],$_GET['id']);
+                       }   
+
+                       if(isset($_GET['data'])){
+                          echo "<input  type='date' name='data' id='data' value='".$_GET['data']."' onblur='validarData()'>";
+                       }else{
+                          echo "<input  type='date' name='data' id='data' onblur='validarData()'>";
+                       }
+                      ?>
                     </div>                  
                     <div class="form-group">
                       <label class="control-label">Digite o CPF do cliente</label>
-                      <input class="form-control" type="text" name="cpf" id="cpf" >
+                      <input class="form-control" type="text" name="cpf" id="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)">
                     </div> 
                     <div class="form-group">
-                      <label class="control-label">Qual procedimento vocÃª deseja realizar?</label>      
-                      <select class="form-control" id="proc" name="proc">
-                        <option>Corte</option>
-                        <option>Lavagem</option>
-                        <option>Pintura</option>
-                        <option>Chapinha</option>
-                      </select>
+                      <label class="control-label">Qual procedimento você deseja realizar?</label>
+                      <input class="form-control" type="text" id="proc" name="proc">                      
                     </div> 
                     <div class="form-group">
-                      <label class="control-label">Selecione um horÃ¡rio</label>
+                      <label class="control-label">Selecione um horário</label>
                       <select class="form-control" id="hora" name="hora">
                        <?php
 
@@ -94,10 +148,50 @@ if(isset($_SESSION['return'])){
                        ?>
                       </select>                      
                     </div>            
-                  </form>                  
+                  </form>
+                  <?php
+                 
+                  if(isset($_GET['st']) and isset($_GET['id'])){
+                          gerenciar_agenda($_GET['st'],$_GET['id']);
+                  }   
+
+                  if(isset($_GET['data'])){
+
+                  $connect = mysqli_connect('localhost','root','', 'projeto shalon');
+                  $result = mysqli_query($connect, "select p.nome, cs.Servico, cs.hora, cs.status, cs.ID from cliente c, consulta cs, pessoa p where cs.data = '".$_GET['data']."' and cs.Id_cliente = c.Id and c.CPF = p.CPF");
+                      if(mysqli_num_rows($result) == 0){
+                        echo "<script type='text/javascript'>
+                                  alert('Nenhum procedimento encontrado');
+                              </script>";                        
+                      }else{
+                        echo "<table class= 'table'>";
+                        echo "<thead>";
+                        echo " <tr>";
+                        echo    "<th>Cliente</th>";
+                        echo    "<th>Procedimento</th>";
+                        echo    "<th>Hora</th>";                                                
+                        echo    "<th>Status</th>";  
+                        echo    "<th>Ações</th>";                                                
+                        echo  "</tr>";
+                        echo "</thead>";
+                        while($row = mysqli_fetch_assoc($result)){
+                          if($row['status']=='a'){
+                            echo "<tr><td>".$row['nome']."</td><td>".$row['Servico']."</td><td>".$row['hora']."</td><td>Marcado</td><td class='actions'>
+                                  <a data-toggle='tooltip' title='Realizar consulta' class='btn btn-warning btn-xs' href='listar_agenda.php?st=r&id=".$row['ID']."&data=".$_GET['data']."'><i class='fa fa-check-square-o' aria-hidden='true'></i></a>
+                                  <a data-toggle='tooltip' title='Cancelar consulta' class='btn btn-danger btn-xs' href='listar_agenda.php?st=c&id=".$row['ID']."&data=".$_GET['data']."'><i class='fa fa-times' aria-hidden='true'></i></a></td></tr>";        
+                          }elseif($row['status']=='r'){
+                            echo "<tr><td>".$row['nome']."</td><td>".$row['Servico']."</td><td>".$row['hora']."</td><td>Realizado</td><td></td></tr>";
+                          }elseif($row['status']=='c'){
+                            echo "<tr><td>".$row['nome']."</td><td>".$row['Servico']."</td><td>".$row['hora']."</td><td>Cancelado</td><td></td></tr>";
+                        }
+                      }
+                    }
+                  }    
+                          
+                  ?>                  
               </div>  
               <div class="card-footer">
-                <button class="btn btn-primary icon-btn" type="button" onclick="cadastrar();"><i class="fa fa-fw fa-lg fa-check-circle"></i>Cadastrar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-default icon-btn" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+                <button class="btn btn-primary icon-btn" type="button" onclick="cadastrar();"><i class="fa fa-fw fa-lg fa-check-circle"></i>Agendar</button>&nbsp;&nbsp;&nbsp;<a onclick="cancelar()" class="btn btn-default icon-btn" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
               </div>           
             </div>
           </div>        
@@ -105,6 +199,7 @@ if(isset($_SESSION['return'])){
       </div>
     </div>
     <!-- Javascripts-->
+    <script src='http://momentjs.com/downloads/moment.min.js'></script>
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/essential-plugins.js"></script>
     <script src="js/bootstrap.min.js"></script>

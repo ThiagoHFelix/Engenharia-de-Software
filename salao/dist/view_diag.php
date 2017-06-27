@@ -1,11 +1,12 @@
+<!DOCTYPE html>
 <?php
   session_start();
    /*
     Autor: Paulo Gabriel Ronchini
     Data: 08/05/2017
-    Tela de visualizaÃ§Ã£o de dados de procedimentos.
+    Tela de visualização de dados de procedimentos.
   */
-  #Verifica se o usuÃ¡rio esta logado, caso nÃ£o esteja, ele Ã© redirecionado para a tela de login.
+  #Verifica se o usuário esta logado, caso não esteja, ele é redirecionado para a tela de login.
   if(empty($_SESSION['chave']) || $_SESSION['chave']<>'ok'){
     header("Location:page_login.php");
   }
@@ -29,30 +30,25 @@
     <?php
 	include_once("cabecalho.php");
   ?>
-      <div class="content-wrapper">
+       <div class="content-wrapper">        
+        <div class="page-title" id="titulo">                    
+          <h1><i class="fa fa-edit"></i> Informações sobre o Diagnóstico</h1>          
+        </div>
         <div class="page-title">
-          <div>
-            <h1><i class="fa fa-edit"></i> Atualizar DiagnÃ³stico</h1>
-            
-          </div>
-          <div>
-            <ul class="breadcrumb">
-              <li><i class="fa fa-home fa-lg"></i></li>
-              <li>Home</li>
-              <li><a href="#">Novo procedimento</a></li>
-            </ul>
-          </div>
+          <ul class="breadcrumb">              
+            <li><a href="adm.php">Home</a></li>
+            <li><a href="#">Informações sobre o Diagnóstico</a></li>
+          </ul>
         </div>
         <div class="row">
           <div class="col-md-8">
             <div class="card">
-              <h3 class="card-title">Consultar DiagnÃ³sticos</h3>
-              <div class="card-body">
-                  <h3>DiagnÃ³stico</h3>
+              <h3 class="card-title">Informações sobre o Diagnóstico</h3>
+              <div class="card-body">                  
                   <div class="table-responsive">
                   <table class="table">
                     <?php
-/*  O cÃ³digo a seguir faz a conexÃ£o ao banco atravÃ©s do comendo mysqli_connect, em seguida com o comando mysqli_query Ã© feita a busca pelos dados de um diagnÃ³stico especÃ­fico a partir do valor da variÃ¡vel  $_GET['apagar'], em seguida o programa exibe os dados.*/
+/*  O código a seguir faz a conexão ao banco através do comendo mysqli_connect, em seguida com o comando mysqli_query é feita a busca pelos dados de um diagnóstico específico a partir do valor da variável  $_GET['apagar'], em seguida o programa exibe os dados.*/
                       $connect = mysqli_connect('localhost','root','', 'projeto shalon');
                       $result = mysqli_query($connect, "SELECT p.Nome, c.CPF, d.Fibra, d.Forma, d.Emocional, d.Funcionario, d.Queda, d.Textura, d.data, d.Cuticula, d.CatacterFisi from pessoa p, cliente c, diagnostico d where d.ID = ".$_GET['apagar']." and d.ID_Cliente = c.ID and c.CPF = p.CPF");
                       $row = mysqli_fetch_assoc($result);
@@ -69,18 +65,18 @@
                         echo "<tr><td>Queda<td>Sim</td></tr>";
                       }else
                       {
-                        echo "<tr><td>Queda<td>NÃ£o</td></tr>";
+                        echo "<tr><td>Queda<td>Não</td></tr>";
                       }
                       echo "<tr><td>Textura</td><td>".$row['Textura']."</td></tr>";
-                      echo "<tr><td>CaracterÃ­sticas FÃ­sicas</td><td>".$row['CatacterFisi']."</td></tr>";
+                      echo "<tr><td>Características Físicas</td><td>".$row['CatacterFisi']."</td></tr>";
                       echo "<tr><td>Cuticula</td><td>".$row['Cuticula']."</td></tr>";
                       echo "<tr><td>Data</td><td>".$row['data']."</td></tr>";
                       echo "<tr><td>Funcionario</td><td>".$row['Funcionario']."</td></tr>";
                       echo "</table>";
-                      echo "<a href = 'atualizar_diagnosticos.php'>Voltar</a>";
+                      echo "<a href = 'atualizar_diagnosticos.php?cpf=".$row['CPF']."'>Voltar</a>";
                     ?>
                   
-                  </div>
+                </div>
               </div>             
             </div>
           </div>        

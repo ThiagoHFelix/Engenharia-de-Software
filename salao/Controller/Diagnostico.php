@@ -36,16 +36,14 @@
 
 	#Verifica se foi encontrado algum Id, caso seja encontrado faz a inserção dos dados na tabela dianóstico.
 	if(mysqli_num_rows($result)==0 || mysqli_num_rows($result)>1){
-		$_SESSION["resposta"] = "false";
+		$_SESSION["resposta_diag"] = "false";
 		header("Location:../dist/cad_diagnosticos.php");					
 	}else{
-		$id = mysqli_fetch_assoc($result);
-		$i = 0;
-		while ($i <= 10) {
-			$result = mysqli_query(conecta(), "insert into diagnostico (ID_Cliente, Textura, Forma, Fibra, Cuticula, Queda, Emocional, CatacterFisi, Funcionario, Cor, Data) values( ".$id["ID"]." , '".$tex."', '".$for."', '".$fi."', '".$cut."', ".$que.", '".$emo."', '".$cat."', '".$fun."', '".$cor."', '"."20".date("y/m/d")."')")or die("Erro!") ;
-				$i = $i+1;				
-		}
-		$_SESSION["resposta"] = "true";
+		$id = mysqli_fetch_assoc($result);		
+		$result = mysqli_query(conecta(), "insert into diagnostico (ID_Cliente, Textura, Forma, Fibra, Cuticula, Queda, Emocional, CatacterFisi, Funcionario, Cor, Data) values( ".$id["ID"]." , '".$tex."', '".$for."', '".$fi."', '".$cut."', ".$que.", '".$emo."', '".$cat."', '".$fun."', '".$cor."', '"."20".date("y/m/d")."')")or die("Erro!") ;
+							
+		
+		$_SESSION["resposta_diag"] = "true";
 		header("Location:../dist/cad_diagnosticos.php");
 	}
 	

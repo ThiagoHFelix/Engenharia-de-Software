@@ -7,7 +7,7 @@
     Autor: Paulo Gabriel Ronchini
     Data: 08/05/2017
 
-    P√°gina com o formul√°rio de agendamento.
+    P·gina com o formul·rio de agendamento.
 
   */
 
@@ -35,36 +35,30 @@ include_once("../Controller/gerenciar_agenda.php");
  
   </head>
   <?php
-	   include_once("cabecalho.php");
+	   include_once("cabecalho.php"); 
   ?>
-      <div class="content-wrapper">
+        <div class="content-wrapper">        
+        <div class="page-title" id="titulo">                    
+          <h1><i class="fa fa-edit"></i> Hor·rios marcados</h1>          
+        </div>
         <div class="page-title">
-          <div>
-            <h1><i class="fa fa-edit"></i> Atualizar Diagn√≥stico</h1>
-            
-          </div>
-          <div>
-            <ul class="breadcrumb">
-              <li><i class="fa fa-home fa-lg"></i></li>
-              <li>Home</li>
-              <li><a href="#">Novo procedimento</a></li>
-            </ul>
-          </div>
+          <ul class="breadcrumb">              
+            <li><a href="adm.php">Home</a></li>
+            <li><a href="#">Hor·rios marcados</a></li>
+          </ul>
         </div>
         <div class="row">
           <div class="col-md-8">
-            <div class="card">
-              <h3 class="card-title" style="margin-bottom:0px;">Agendar</h3>              
+            <div class="card">                         
               <div class="card-body">   
-              <form method="get" id='form_data'>
+              <form method="get" id='form_data' class="form-inline">
                 <div class='form-group'>                                             
-                  <label class="control-label">Selecione a data</label>          
-                  <input class='form-control' type='date' name='data' id='data'>                  
+                  <label class="control-label">Selecione a data:</label>          
+                  <input type='date' name='data' id='data' style="margin:15px;">                  
                 </div>
                 <div class='form-group'>                                         
-                  <input class='form-control' type='submit' value='Procurar' name='bt_data' id='bt_data' onclick="procurar();">        
-                </div>
-              </form>              
+                  <input class='form-control' type='submit' value='Procurar' name='bt_data' id='bt_data' onclick="procurar();">
+
                   <?php
 
                   if(isset($_GET['st']) and isset($_GET['id'])){
@@ -72,9 +66,14 @@ include_once("../Controller/gerenciar_agenda.php");
                   }   
 
                   if(isset($_GET['data'])){
+                    echo  "<a class='form-control' href='agendamento.php?data=".$_GET['data']."'>Realizar agendamento nesta data</a> ";
+                  ?>  
+                </div> 
+              </form>             
+                 <?php                 
 
                   $connect = mysqli_connect('localhost','root','', 'projeto shalon');
-                  $result = mysqli_query($connect, "select p.nome, cs.Servico, cs.hora, cs.status, cs.ID from cliente c, consulta cs, pessoa p where cs.data = '".$_GET['data']."' and cs.Id_cliente = c.Id and c.CPF = p.CPF");
+                  $result = mysqli_query($connect, "select p.nome, cs.Servico, cs.hora, cs.status, cs.ID from cliente c, consulta cs, pessoa p where cs.data = '".$_GET['data']."' and cs.Id_cliente = c.Id and c.CPF = p.CPF order by cs.Hora");
                       if(mysqli_num_rows($result) == 0){
                         echo "<script type='text/javascript'>
                                   alert('Nenhum procedimento encontrado');
@@ -85,9 +84,9 @@ include_once("../Controller/gerenciar_agenda.php");
                         echo " <tr>";
                         echo    "<th>Cliente</th>";
                         echo    "<th>Procedimento</th>";
-                        echo    "<th>Data</th>";                                                
+                        echo    "<th>Hora</th>";                                                
                         echo    "<th>Status</th>";  
-                        echo    "<th>A√ß√µes</th>";                                                
+                        echo    "<th>AÁıes</th>";                                                
                         echo  "</tr>";
                         echo "</thead>";
                         while($row = mysqli_fetch_assoc($result)){
@@ -104,8 +103,9 @@ include_once("../Controller/gerenciar_agenda.php");
                     }
                   }    
                           
-                  ?>
-              </div>                        
+                  ?>                 
+                </div>
+              </div>                                     
             </div>
           </div>        
         </div>
