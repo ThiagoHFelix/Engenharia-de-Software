@@ -1,0 +1,35 @@
+----------------------------------------------------
+Proposta de melhoria do Centro Escolar
+----------------------------------------------------
+
+-> Funcionalidades ausentes no sistema e que serão inseridas no futuro
+
+	-> Adminstrador
+		-> Matricula de Aluno
+		-> Cadatro de Professor em Matérias
+		-> Gerenciamento de Avisos
+		-> Inserção de Matérias nos Cursos além de suas propriedades
+		-> Inserção de avaliação de Aluno
+		-> Inserção de presença de Aluno
+		-> Analise de desenpenho de Alunos
+		-> Contato com outras entidades através do chat
+	-> Professor
+		-> Inserção de avaliação de Aluno
+		-> Inserção de presença de Aluno
+		-> Contato com outras entidades através do chat
+		-> Analise de desenpenho de Alunos 
+		-> Gerenciamento de Atividades
+		-> Gerenciamento de informações pessoais
+	-> Aluno
+		-> Visualização de presenças
+		-> Analise de presença do Aluno
+		-> Requisição de documentos
+		-> Gerenciamento de informações pessoais
+		-> Contato com outras entidades através do chat
+
+-> Melhorias que gostaria de ter inserido
+		
+		-> Criação do sistema utilizando o padrão do framework CodeIgniter 
+		-> Melhor análise de requisitos
+		-> Melhor elaboração de documentos UML
+		
